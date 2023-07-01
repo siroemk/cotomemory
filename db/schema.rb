@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_01_012721) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_01_014716) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -29,6 +29,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_01_012721) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "quotes", force: :cascade do |t|
+    t.text "content", null: false
+    t.bigint "user_id"
+    t.bigint "child_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["child_id"], name: "index_quotes_on_child_id"
+    t.index ["user_id"], name: "index_quotes_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name", null: false
     t.integer "uid", null: false
@@ -40,5 +50,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_01_012721) do
   end
 
   add_foreign_key "children", "families"
+  add_foreign_key "quotes", "children"
+  add_foreign_key "quotes", "users"
   add_foreign_key "users", "families"
 end
