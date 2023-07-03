@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class SessionsController < ApplicationController
+  skip_before_action :authenticate, only: :create
+
   def create
     user = User.from_omniauth(request.env['omniauth.auth'])
     user.build_family(invitation_token: SecureRandom.urlsafe_base64)
