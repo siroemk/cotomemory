@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_01_015625) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_03_052528) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -34,7 +34,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_01_015625) do
   end
 
   create_table "families", force: :cascade do |t|
-    t.integer "invitation_token", null: false
+    t.string "invitation_token", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -51,8 +51,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_01_015625) do
 
   create_table "users", force: :cascade do |t|
     t.string "name", null: false
-    t.integer "uid", null: false
-    t.integer "provider", null: false
+    t.string "uid", null: false
+    t.string "provider", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "family_id", null: false
