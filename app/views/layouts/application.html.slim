@@ -9,5 +9,9 @@ html
     = stylesheet_link_tag 'application', 'data-turbo-track': 'reload'
     = javascript_importmap_tags
   body
+    nav
+      = link_to 'Cotomemory', quotes_path
+    - if flash.notice.presence
+      = flash.notice
     main
       = yield
