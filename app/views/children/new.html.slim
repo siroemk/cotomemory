@@ -3,7 +3,7 @@ h1 こどもの情報
 = form_with model: @child, locale: true do |f|
   .form-group
     = f.label :名前
-    = f.text_area :name
+    = f.text_field :name
   .form-group
     = f.label :誕生日
     = f.date_select :date_of_birth, { use_month_numbers: true }
