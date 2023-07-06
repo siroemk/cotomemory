@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Quote < ApplicationRecord
+class Comment < ApplicationRecord
   belongs_to :quote
   belongs_to :user
 
