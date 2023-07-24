@@ -12,7 +12,8 @@ html
   body
     nav
       = link_to 'Cotomemory', quotes_path
-    - if flash.notice.presence
-      = flash.notice
     main
+      - if flash.notice.presence
+        = flash.notice   
       = yield
+      = render 'shared/footer'
