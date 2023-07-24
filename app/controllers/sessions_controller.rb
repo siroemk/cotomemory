@@ -11,9 +11,9 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       child = Child.find_by(family_id: user.family_id)
       if child.nil?
-        redirect_to new_child_path
+        redirect_to new_child_path, notice: 'ログインしました'
       else
-        redirect_to quotes_path, notice: 'ログインしました！'
+        redirect_to quotes_path, notice: 'ログインしました'
       end
     else
       redirect_to root_path
