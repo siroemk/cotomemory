@@ -7,4 +7,7 @@ Rails.application.routes.draw do
 
   resources :quotes, only: %i[index new create]
   resources :children, only: %i[new create]
+
+  get 'terms', to: 'top#terms'
+  get 'privacy', to: 'top#privacy'
 end
