@@ -1,9 +1,12 @@
-/ slim-lint:disable LineLength
-
-h1 名言一覧
 .content
-  p 最初の名言を登録しよう！
-  = link_to '登録する', new_quote_path, data: { turbo_frame: 'new_quote' }
+  #quotes
+    = render @quotes
 
-  .hidden data-controller='modal' data-modal-target='modal' data-action='turbo:frame-load->modal#open turbo:submit-end->modal#close'
-    = turbo_frame_tag 'new_quote'
+  - if @quotes.empty?
+    #first_message
+      | 最初の名言を登録しよう！
+
+  = link_to '登録する', new_quote_path, data: { turbo_frame: 'new_quote' }, class: 'bg-sky-700 hover:bg-sky-600 text-white py-1 px-10 rounded inline-block font-medium cursor-pointer mt-6'
+  .hidden.fixed.overlay.top-0.left-0.w-screen.h-screen.bg-gray-700.bg-opacity-50.z-10 data-controller='modal' data-modal-target='modal' data-action='turbo:frame-load->modal#open turbo:submit-end->modal#close'
+    .absolute.top-1/2.left-1/2.-translate-x-1/2.-translate-y-1/2.w-max.h-max.bg-white.p-10.rounded-lg
+      = turbo_frame_tag 'new_quote'

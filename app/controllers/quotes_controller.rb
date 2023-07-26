@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
 class QuotesController < ApplicationController
-  def index; end
+  def index
+    @quotes = Quote.where(user_id: current_user.id).includes(:user, :child).order(created_at: :desc)
+  end
 
   def new
     @quote = Quote.new
