@@ -10,12 +10,14 @@ class QuotesController < ApplicationController
   end
 
   def create
-    @quote = Quote.new(quote_params)
-    @quote.user_id = current_user.id
+    @quote = current_user.quotes.build(quote_params)
     if @quote.save
-      redirect_to quotes_path
+      respond_to do |format|
+        format.html { redirect_to quotes_path, notice: '名言を登録しました' }
+        format.turbo_stream
+      end
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
