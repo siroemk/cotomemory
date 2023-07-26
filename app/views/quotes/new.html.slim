@@ -1,10 +1,2 @@
 = turbo_frame_tag 'new_quote' do
-
-  h1 名言登録フォーム
-
-  = form_with url: quotes_path, model: @quote, locale: true do |f|
-    .form-group
-      = f.text_area :content
-    .form-group
-      = f.collection_select :child_id, Child.order(:created_at), :id, :name, {}
-    = f.submit '登録する'
+  = render 'form', quote: @quote

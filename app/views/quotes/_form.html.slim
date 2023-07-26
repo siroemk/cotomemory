@@ -1,0 +1,7 @@
+= form_with model: @quote do |f|
+  .my-4
+    = f.text_area :content
+  .my-4
+    = f.collection_select :child_id, Child.order(:created_at), :id, :name, {}
+  .inline
+    = f.submit '登録する', class: 'bg-sky-700 hover:bg-sky-600 text-white py-1 px-10 rounded inline-block font-medium cursor-pointer'
