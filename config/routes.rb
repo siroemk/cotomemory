@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get 'auth/failure', to: redirect('/')
   get '/logout', to: 'sessions#destroy'
 
-  resources :quotes, only: %i[index new edit create update destroy]
+  resources :quotes
   resources :children, only: %i[new create]
 
   get 'terms', to: 'top#terms'

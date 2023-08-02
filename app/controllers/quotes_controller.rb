@@ -1,11 +1,13 @@
 # frozen_string_literal: true
 
 class QuotesController < ApplicationController
-  before_action :set_quote, only: %i[edit update destroy]
+  before_action :set_quote, only: %i[show edit update destroy]
 
   def index
     @quotes = Quote.where(user_id: current_user.id).includes(:user, :child).order(created_at: :desc)
   end
+
+  def show; end
 
   def new
     @quote = Quote.new
