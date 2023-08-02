@@ -7,7 +7,9 @@ class QuotesController < ApplicationController
     @quotes = Quote.where(user_id: current_user.id).includes(:user, :child).order(created_at: :desc)
   end
 
-  def show; end
+  def show
+    @comment = Comment.new
+  end
 
   def new
     @quote = Quote.new
