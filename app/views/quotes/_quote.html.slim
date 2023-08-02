@@ -7,3 +7,4 @@
     .hidden.fixed.overlay.top-0.left-0.w-screen.h-screen.bg-gray-700.bg-opacity-50.z-10 data-controller='modal' data-modal-target='modal' data-action='turbo:frame-load->modal#open turbo:submit-end->modal#close'
       .absolute.top-1/2.left-1/2.-translate-x-1/2.-translate-y-1/2.w-max.h-max.bg-white.p-10.rounded-lg
         = turbo_frame_tag 'edit_quote'
+    = link_to '削除', quote, data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' }, class: 'text-sm text-slate-500 cursor-pointer'

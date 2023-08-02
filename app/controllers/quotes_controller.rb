@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class QuotesController < ApplicationController
-  before_action :set_quote, only: %i[edit update]
+  before_action :set_quote, only: %i[edit update destroy]
 
   def index
     @quotes = Quote.where(user_id: current_user.id).includes(:user, :child).order(created_at: :desc)
@@ -34,6 +34,10 @@ class QuotesController < ApplicationController
     else
       render :edit, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @quote.destroy
   end
 
   private
