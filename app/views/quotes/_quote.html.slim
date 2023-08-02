@@ -1,4 +1,9 @@
-.border-b.py-4
-  p = quote.content
-  p.text-sm.text-slate-500 = l quote.created_at, format: :long
-  p.text-sm.text-slate-500 = quote.user.name
+= turbo_frame_tag quote do
+  .border-b.py-4
+    p = quote.content
+    p.text-sm.text-slate-500 = l quote.created_at, format: :long
+    p.text-sm.text-slate-500 = quote.user.name
+    = link_to '編集', edit_quote_path(quote), data: { turbo_frame: 'edit_quote' }, class: 'text-sm text-slate-500 cursor-pointer'
+    .hidden.fixed.overlay.top-0.left-0.w-screen.h-screen.bg-gray-700.bg-opacity-50.z-10 data-controller='modal' data-modal-target='modal' data-action='turbo:frame-load->modal#open turbo:submit-end->modal#close'
+      .absolute.top-1/2.left-1/2.-translate-x-1/2.-translate-y-1/2.w-max.h-max.bg-white.p-10.rounded-lg
+        = turbo_frame_tag 'edit_quote'
