@@ -1,0 +1,4 @@
+= turbo_frame_tag comment do
+  p = comment.content
+  p.text-sm.text-slate-500 = comment.user.name
+  p.text-sm.text-slate-500 = l comment.created_at, format: :long

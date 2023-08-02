@@ -9,6 +9,7 @@ class QuotesController < ApplicationController
 
   def show
     @comment = Comment.new
+    @comments = Comment.where(quote_id: params[:id]).includes(:user).order(created_at: :desc)
   end
 
   def new

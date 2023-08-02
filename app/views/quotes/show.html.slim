@@ -1,3 +1,6 @@
 = render @quote
 
+#comments
+  = render partial: 'comments/comment', collection: @comments, as: :comment
+
 = render 'comments/form', { quote: @quote, comment: @comment }
