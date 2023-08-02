@@ -19,6 +19,20 @@ class CommentsController < ApplicationController
     end
   end
 
+  def destroy
+    @quote = Quote.find(params[:quote_id])
+    @comment = @quote.comments.find(params[:id])
+    if current_user.id == @comment.user.id
+      @comment.destroy
+      respond_to do |format|
+        format.html { redirect_to quote_comments_path(params[:quote_id]), notice: 'コメントしました' }
+        format.turbo_stream
+      end
+    else
+      render 'quotes/show', status: :unprocessable_entity
+    end
+  end
+
   private
 
   def comment_params
