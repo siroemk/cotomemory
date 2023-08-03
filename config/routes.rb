@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :quotes do
     resources :comments, only: %i[create destroy]
   end
-  resources :children, only: %i[new edit create update]
+  resources :children, only: %i[new edit create update destroy]
 
   get 'terms', to: 'top#terms'
   get 'privacy', to: 'top#privacy'
