@@ -1,9 +1,16 @@
-h1 アカウント設定
+h1.mb-6.text-center.font-semibold
+  | アカウント設定
 
 = form_with model: current_user, local: true do |f|
-  .my-4
-    = f.text_field :name
-  .inline
-    = f.submit '更新する', class: 'bg-sky-700 hover:bg-sky-600 text-white py-1 px-10 rounded inline-block font-medium cursor-pointer'
+  .mb-2
+    = f.label :なまえ,
+      class: 'pl-2 py-3 text-sm font-medium'
+  .mb-6
+    = f.text_field :name,
+      class: 'py-3 px-4 w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500'
+  .mb-6.text-center
+    = f.submit '更新する',
+      class: 'py-4 px-20 w-1/2 bg-orange-500 hover:bg-orange-300 rounded-full text-white font-bold cursor-pointer'
 
-= link_to 'アカウントを削除する', user_path, data: { turbo_method: :delete, turbo_confirm: 'アカウントを削除しますか？' }
+.text-right.text-xs.text-gray-700
+  = link_to 'アカウントを削除する', user_path, data: { turbo_method: :delete, turbo_confirm: 'アカウントを削除しますか？' }
