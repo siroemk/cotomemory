@@ -1,3 +1,10 @@
-h1 家族に共有する
-p 家族に以下のURLを共有して登録してもらおう
-p #{request.protocol}#{request.host}/welcome?invitation_token=#{@family.invitation_token}
+h1.mb-6.text-center.font-semibold
+  | 家族を招待する
+
+p.mb-8.text-center.text-xs
+  | 家族に以下のURLを共有して登録してもらおう！
+  br
+  | 以下のURLからログインすると、こどもの情報を家族で共有することができます。
+
+.py-3.px-4.w-full.bg-orange-50.rounded-md.text-sm
+  p #{request.protocol}#{request.host}/welcome?invitation_token=#{@family.invitation_token}

@@ -8,4 +8,8 @@ class TopController < ApplicationController
   def terms; end
 
   def privacy; end
+
+  def welcome
+    @invitation_token = params[:invitation_token]
+  end
 end

@@ -5,12 +5,19 @@ class SessionsController < ApplicationController
 
   def create
     user = User.from_omniauth(request.env['omniauth.auth'])
-    user.build_family(invitation_token: SecureRandom.urlsafe_base64) if user.family_id.nil?
+    if user.family_id.nil?
+      invitation_token = request.env['omniauth.params']['invitation_token']
+      if invitation_token.present?
+        family = Family.find_by!(invitation_token:)
+        user.family = family
+      else
+        user.build_family(invitation_token: SecureRandom.urlsafe_base64)
+      end
+    end
 
     if user.save
       session[:user_id] = user.id
-      child = Child.find_by(family_id: user.family_id)
-      if child.nil?
+      if Child.find_by(family_id: user.family_id).nil?
         redirect_to new_child_path, notice: 'ログインしました'
       else
         redirect_to quotes_path, notice: 'ログインしました'

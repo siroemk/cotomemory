@@ -14,4 +14,5 @@ Rails.application.routes.draw do
   get 'user', to: 'users#edit'
   get 'terms', to: 'top#terms'
   get 'privacy', to: 'top#privacy'
+  get 'welcome', to: 'top#welcome'
 end
