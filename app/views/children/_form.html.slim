@@ -1,0 +1,16 @@
+= form_with model: @child, locale: true do |f|
+  .mb-2
+    = f.label :こどもの名前,
+      class: 'pl-2 py-3 text-sm font-medium'
+  .mb-6
+    = f.text_field :name,
+      class: 'py-3 px-4 w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500'
+  .mb-2
+    = f.label :こどもの誕生日,
+      class: 'pl-2 py-3 text-sm font-medium'
+  .mb-6
+    = f.date_select :date_of_birth, { use_month_numbers: true },
+      class: 'py-3 px-4 w-1/4 border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500'
+  .mb-6.text-center
+    = f.submit '保存する',
+      class: 'py-4 px-20 w-1/2 bg-orange-500 hover:bg-orange-300 rounded-full text-white font-bold cursor-pointer'

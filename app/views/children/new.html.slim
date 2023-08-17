@@ -1,10 +1,6 @@
-h1 こどもの情報
+h1.mb-6.text-center.font-semibold
+  | こどもの情報を登録する
+p.mb-8.text-center.text-xs
+  | こどもの情報は登録後も設定から変更できます。
 
-= form_with model: @child, locale: true do |f|
-  .form-group
-    = f.label :名前
-    = f.text_field :name
-  .form-group
-    = f.label :誕生日
-    = f.date_select :date_of_birth, { use_month_numbers: true }
-  = f.submit '登録する'
+  = render 'form', child: @child

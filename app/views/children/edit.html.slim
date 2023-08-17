@@ -1,10 +1,8 @@
-= form_with model: @child do |f|
-  .my-4
-    = f.label :こどもの名前
-    = f.text_field :name
-  .my-4
-    = f.label :こどもの誕生日
-    = f.date_select :date_of_birth, { use_month_numbers: true }
-  = f.submit '編集する', class: 'bg-sky-700 hover:bg-sky-600 text-white py-1 px-10 rounded inline-block font-medium cursor-pointer'
+h1.mb-6.text-center.font-semibold
+  | こどもの情報を修正する
 
-= link_to '削除', child_path(@child), data: { turbo_method: :delete, turbo_confirm: 'こどもの情報を削除すると名言も削除されます。本当に削除しますか？' }, class: 'text-sm text-slate-500 cursor-pointer'
+= render 'form', child: @child
+
+.text-right.text-xs.text-gray-700
+  = link_to 'こどもの情報を削除する', child_path(@child), data: { turbo_method: :delete, turbo_confirm: 'こどもの情報を削除すると名言も削除されます。本当に削除しますか？' },
+    class: 'text-sm text-slate-500 cursor-pointer'
