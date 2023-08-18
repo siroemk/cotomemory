@@ -1,0 +1,8 @@
+h1.mb-6.text-center.font-semibold
+  | こどもの一覧
+
+#children
+  = render @children
+
+- if @children.empty?
+  | こどもの情報が登録されていません。

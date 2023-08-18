@@ -3,6 +3,10 @@
 class ChildrenController < ApplicationController
   before_action :set_child, only: %i[edit update destroy]
 
+  def index
+    @children = Child.where(family_id: current_user.family_id).order(created_at: :desc)
+  end
+
   def new
     @child = Child.new
   end

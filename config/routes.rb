@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :quotes do
     resources :comments, only: %i[create destroy]
   end
-  resources :children, only: %i[new edit create update destroy]
+  resources :children, only: %i[index new edit create update destroy]
   resource :family, only: %i[show]
   resource :user, only: %i[update destroy]
   get 'user', to: 'users#edit'
