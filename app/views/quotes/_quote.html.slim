@@ -8,5 +8,10 @@
       .absolute.top-1/2.left-1/2.-translate-x-1/2.-translate-y-1/2.w-max.h-max.bg-white.p-10.rounded-lg
         = turbo_frame_tag 'edit_quote'
     = link_to '削除', quote, data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' }, class: 'text-sm text-slate-500 cursor-pointer'
-    = link_to 'コメント', quote_path(quote.id), data: { turbo: false }, class: 'text-sm text-slate-500 cursor-pointer'
-    = quote.comments.count
+    .flex.justify-end
+      = link_to quote_path(quote.id), data: { turbo: false }, class: 'cursor-pointer pr-1'
+        .flex
+          .pr-1
+            = image_tag 'comment-icon.png', alt: 'コメントの画像', class: 'h-4'
+          p.text-slate-500.text-xs
+            = quote.comments.count
