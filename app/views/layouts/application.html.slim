@@ -1,5 +1,5 @@
 doctype html
-html
+html.bg-slate-200
   head
     title
       | cotomemory
@@ -9,11 +9,14 @@ html
     = stylesheet_link_tag 'tailwind', 'inter-font', 'data-turbo-track': 'reload'
     = stylesheet_link_tag 'application', 'data-turbo-track': 'reload'
     = javascript_importmap_tags
-  body
-    nav
-      = link_to 'Cotomemory', quotes_path
-    main
-      - if flash.notice.presence
-        = flash.notice
-      = yield
+  body.max-w-screen-sm.mx-auto.h-screen.bg-white.flex.flex-col.min-h-screen
+    - if current_user
+      header.h-14.px-6.flex.justify-between.bg-white.w-full.border-b.border-slate-200
+        = render 'shared/header'
+    main.flex-1
+      .p-2.bg-slate-100.h-full.w-full
+        - if flash.notice.presence
+          p.bg-amber-50.px-2.py-4.rounded = flash.notice
+        = yield
+    footer
       = render 'shared/footer'
