@@ -13,3 +13,34 @@
  *= require_tree .
  *= require_self
  */
+
+.navbar {
+  position: relative;
+  width: 24px;
+  height: 32px;
+  margin-top: 12px;
+}
+
+.navbar_icon,
+.navbar_icon::after,
+.navbar_icon::before {
+  display: block;
+  background-color: #475569;
+  width: 24px;
+  height: 3px;
+  border-radius: 9999px
+}
+
+.navbar_icon::after,
+.navbar_icon::before {
+  position: absolute;
+  content: '';
+}
+
+.navbar_icon::before {
+  top: 8px;
+}
+
+.navbar_icon::after {
+  bottom: 7px;
+}

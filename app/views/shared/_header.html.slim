@@ -1,3 +1,25 @@
-= link_to quotes_path
+  = link_to quotes_path
     .flex.items-center.h-14
       = image_tag 'logo.png', alt: 'Cotomemoryのロゴ画像', class: 'w-36'
+
+  - if current_user
+    nav data-controller='navbar'
+      button.navbar data-action='click->navbar#open'
+        span.navbar_icon
+      .hidden.fixed.overlay.top-0.left-0.w-screen.h-screen.bg-white.bg-opacity-70.z-50 data-navbar-target='navbar' data-action='click->navbar#close'
+        .relative.max-w-screen-sm.mx-auto.bg-orange
+          .absolute.top-0.right-2.w-3/4.bg-primary.text-white
+            ul
+              li.text-right.px-6.py-2
+                button.text-3xl data-action='click->navbar#close'
+                  | ×
+              li.p-6.text-base.text-center
+                = link_to 'アカウント設定', user_path
+              li.p-6.text-base.text-center
+                = link_to 'こどもの一覧', children_path
+              li.p-6.text-base.text-center
+                = link_to 'こどもの情報を追加する', new_child_path
+              li.p-6.text-base.text-center
+                = link_to '家族に共有する', family_path
+              li.p-6.text-base.text-center
+                = link_to 'ログアウト', logout_path
