@@ -82,3 +82,4 @@ gem 'omniauth-rails_csrf_protection'
 gem 'tailwindcss-rails', '~> 2.0'
 
 gem 'dockerfile-rails', '>= 1.5', group: :development
+gem 'kaminari'
