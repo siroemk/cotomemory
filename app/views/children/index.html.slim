@@ -1,8 +1,9 @@
-h1.mb-6.text-center.font-semibold
-  | こどもの一覧
+.py-4.px-2.mb-2.bg-white.rounded.h-full
+  h1.mb-6.text-center.font-semibold
+    | こどもの一覧
 
-#children
-  = render @children
+  #children
+    = render @children
 
-- if @children.empty?
-  | こどもの情報が登録されていません。
+  - if @children.empty?
+    | こどもの情報が登録されていません。
