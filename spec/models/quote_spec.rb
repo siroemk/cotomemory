@@ -15,4 +15,20 @@ RSpec.describe 'Quote', type: :model do
       expect(quote.errors[:content]).to include('を入力してください')
     end
   end
+
+  context 'userが空の場合' do
+    it '登録失敗すること' do
+      quote = build(:quote, user: nil)
+      quote.valid?
+      expect(quote.errors[:user]).to include('を入力してください')
+    end
+  end
+
+  context 'childが空の場合' do
+    it '登録失敗すること' do
+      quote = build(:quote, child: nil)
+      quote.valid?
+      expect(quote.errors[:child]).to include('を入力してください')
+    end
+  end
 end
