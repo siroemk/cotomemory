@@ -7,4 +7,12 @@ RSpec.describe 'Comment', type: :model do
     comment = build(:comment)
     expect(comment).to be_valid
   end
+
+  context 'コメントが空の場合' do
+    it '登録失敗すること' do
+      comment = build(:comment, content: nil)
+      comment.valid?
+      expect(comment.errors[:content]).to include('を入力してください')
+    end
+  end
 end
