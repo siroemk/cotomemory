@@ -12,7 +12,7 @@ RSpec.describe 'Quotes', type: :system do
 
     click_link nil, href: new_quote_path
     fill_in 'quote[content]', with: 'テストの名言です'
-    click_on '保存する'
+    click_on '登録する'
     expect(current_path).to eq quotes_path
     expect(page).to have_content 'テストの名言です'
   end
