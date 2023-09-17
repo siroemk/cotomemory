@@ -9,6 +9,7 @@ html.bg-slate-200
     = stylesheet_link_tag 'tailwind', 'inter-font', 'data-turbo-track': 'reload'
     = stylesheet_link_tag 'application', 'data-turbo-track': 'reload'
     = javascript_importmap_tags
+    = favicon_link_tag 'favicon.ico'
   body.max-w-screen-sm.mx-auto.h-screen.bg-white.flex.flex-col.min-h-screen
     - if current_user
       header.h-14.px-6.flex.justify-between.bg-white.w-full.border-b.border-slate-200
