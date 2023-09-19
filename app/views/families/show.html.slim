@@ -7,5 +7,15 @@
     br
     | 以下のURLからログインすると、こどもの情報を家族で共有することができます。
 
-  .py-3.px-4.w-full.bg-orange-50.rounded-md.text-sm
+  .mb-10.py-3.px-4.w-full.bg-orange-50.rounded-md.text-sm
     p #{request.protocol}#{request.host}/welcome?invitation_token=#{@family.invitation_token}
+
+  .mx-2
+    h2.mb-6.pb-1.border-b-2.border-slate-200
+      | 家族の一覧
+    - if @users.empty?
+      p.text-sm
+        | こどもの情報を共有している家族はいません。
+    - else
+      #users
+      = render @users
