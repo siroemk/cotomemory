@@ -7,3 +7,7 @@
 
   - if @children.empty?
     | こどもの情報が登録されていません。
+
+  .text-right.text-sm.mt-4
+    = link_to 'こどもを追加する', new_child_path,
+      class: 'font-bold text-slate-600 cursor-pointer'
