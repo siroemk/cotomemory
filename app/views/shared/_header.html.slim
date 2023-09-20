@@ -1,8 +1,9 @@
-  = link_to quotes_path
-    .flex.items-center.h-14
-      = image_tag 'logo.png', alt: 'Cotomemoryのロゴ画像', class: 'w-36'
+- if current_user
+  .h-14.px-6.flex.justify-between.bg-white.w-full.border-b.border-slate-200
+    = link_to quotes_path
+      .flex.items-center.h-14
+        = image_tag 'logo.png', alt: 'Cotomemoryのロゴ画像', class: 'w-36'
 
-  - if current_user
     nav data-controller='navbar'
       button.navbar data-action='click->navbar#open'
         span.navbar_icon
@@ -23,3 +24,6 @@
                 = link_to '家族に共有する', family_path
               li.p-6.text-base.text-center
                 = link_to 'ログアウト', logout_path
+- else
+  = link_to root_path
+    = image_tag 'logo_square.png', alt: 'Cotomemoryのロゴ画像', class: 'w-48 py-6 m-auto max-w-screen-sm'
