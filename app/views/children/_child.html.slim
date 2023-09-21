@@ -1,5 +1,7 @@
-.flex.justify-between.mb-2
-  p.text-sm
+.flex.justify-between.mb-3.px-2
+  p.text-sm.w-40
     = child.name
+  p.text-sm.w-40
+    = l child.date_of_birth
   = link_to '編集', edit_child_path(child),
-    class: 'bg-white hover:bg-orange-300 border border-orange-500 py-2 px-6 rounded text-sm cursor-pointer'
+    class: 'bg-sky-600 hover:bg-sky-500 text-white py-1 px-4 h-7 rounded text-sm cursor-pointer'
