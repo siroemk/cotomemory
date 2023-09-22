@@ -4,7 +4,8 @@ class QuotesController < ApplicationController
   before_action :set_quote, only: %i[show edit update destroy]
 
   def index
-    @quotes = Quote.where(user_id: current_user.id).includes(:user, :child).order(created_at: :desc)
+    children_ids = current_user.family.children.pluck(:id)
+    @quotes = Quote.where(child_id: children_ids).includes(:user, :child).order(created_at: :desc)
   end
 
   def show
