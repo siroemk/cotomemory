@@ -1,12 +1,16 @@
 = turbo_frame_tag quote do
-  .border-b.py-4
-    p = quote.content
-    p.text-sm.text-slate-500 = l quote.created_at, format: :long
-    = link_to '編集', edit_quote_path(quote), data: { turbo_frame: 'edit_quote' }, class: 'text-sm text-slate-500 cursor-pointer'
-    .hidden.fixed.overlay.top-0.left-0.w-screen.h-screen.bg-gray-700.bg-opacity-50.z-10 data-controller='modal' data-modal-target='modal' data-action='turbo:frame-load->modal#open turbo:submit-end->modal#close'
-      .absolute.top-1/2.left-1/2.-translate-x-1/2.-translate-y-1/2.w-max.h-max.bg-white.p-10.rounded-lg
-        = turbo_frame_tag 'edit_quote'
-    = link_to '削除', quote, data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' }, class: 'text-sm text-slate-500 cursor-pointer'
+  .py-4.px-2.mb-2.bg-white.rounded.relative
+    .flex.pb-2
+      p.text-sm.text-slate-600.font-semibold
+        = quote.child.name
+      p.text-sm.text-slate-600.font-semibold
+        = "（#{year_of_birth(quote.child.date_of_birth)}才#{month_of_birth(quote.child.date_of_birth)}ヶ月）"
+      p.text-sm.text-slate-400
+        = l quote.created_at, format: :long
+
+    p.leading-relaxed.text-slate-800.text-base
+      = quote.content
+
     .flex.justify-end
       = link_to quote_path(quote.id), data: { turbo: false }, class: 'cursor-pointer pr-1'
         .flex

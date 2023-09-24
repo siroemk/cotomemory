@@ -44,3 +44,40 @@
 .navbar_icon::after {
   bottom: 7px;
 }
+
+.plus_icon {
+  display: inline-block;
+  background: #fa7f64;
+  color: #fff;
+  font-size: 1.25rem;
+  font-weight: bold;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0.5rem;
+  position: relative;
+  border-radius: 9999px;
+  z-index: 10;
+}
+
+.plus_icon::before {
+  content: '';
+  position: absolute;
+  background: #fff;
+  width: 1.15rem;
+  height: 0.15rem;
+  border-radius: 0.25rem;
+  top: 1.25rem;
+  left: 0.7rem;
+}
+
+.plus_icon::after {
+  content: '';
+  position: absolute;
+  background: #fff;
+  width: 1.15rem;
+  height: 0.15rem;
+  border-radius: 0.15rem;
+  top: 1.25rem;
+  left: 0.7rem;
+  transform: rotate(90deg);
+}
