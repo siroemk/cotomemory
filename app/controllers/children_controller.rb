@@ -21,7 +21,7 @@ class ChildrenController < ApplicationController
     if @child.save
       redirect_to quotes_path, notice: 'こどもの情報を登録しました'
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -30,7 +30,7 @@ class ChildrenController < ApplicationController
     if @child.update(child_params)
       redirect_to quotes_path, notice: 'こどもの情報を登録しました'
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 
