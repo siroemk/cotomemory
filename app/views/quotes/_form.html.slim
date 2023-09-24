@@ -1,4 +1,10 @@
 = form_with model: quote, locale: true do |f|
+  - if quote.errors.any?
+    ul
+      - quote.errors.full_messages.each do |message|
+        li.text-rose-600.text-sm.mb-1.text-left
+          = message
+
   .mb-4.text-left
     = f.collection_select :child_id, Child.where(family_id: current_user.family_id).order(:created_at), :id, :name, {}, class: 'py-3 px-4 w-40 border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500'
   .mb-4
