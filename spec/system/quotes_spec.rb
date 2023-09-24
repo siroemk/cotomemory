@@ -10,7 +10,7 @@ RSpec.describe 'Quotes', type: :system do
     fill_in 'child[name]', with: '花子'
     click_on '保存する'
 
-    click_link nil, href: new_quote_path
+    click_on '登録する'
     fill_in 'quote[content]', with: 'テストの名言です'
     click_on '登録する'
     expect(current_path).to eq quotes_path
