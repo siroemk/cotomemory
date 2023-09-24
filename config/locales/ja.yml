@@ -1,6 +1,24 @@
 ---
 ja:
   activerecord:
+    models:
+      user: ユーザー
+      child: こども
+      quote: 名言
+      comment: コメント
+      family: 家族
+    attributes:
+      user:
+        name: 名前
+      child:
+        name: こどもの名前
+        date_of_birth: 誕生日
+      quote:
+        content: 名言の内容
+      comment:
+        content: コメントの内容
+      family:
+        invitation_token: 招待コード
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
