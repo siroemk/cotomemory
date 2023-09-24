@@ -2,4 +2,5 @@
   p = comment.content
   p.text-sm.text-slate-500 = comment.user.name
   p.text-sm.text-slate-500 = l comment.created_at, format: :long
-  = link_to '削除', quote_comment_path(comment.quote_id, comment.id), data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' }, class: 'text-sm text-slate-500 cursor-pointer'
+  - if current_user == comment.user
+    = link_to '削除', quote_comment_path(comment.quote_id, comment.id), data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' }, class: 'text-sm text-slate-500 cursor-pointer'
