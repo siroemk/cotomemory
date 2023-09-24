@@ -1,2 +1,4 @@
-= turbo_frame_tag 'edit_quote' do
-  = render 'form', quote: @quote
+= turbo_frame_tag @quote do
+  .py-4.px-2.mb-2.bg-white.rounded
+    = render 'form', quote: @quote
+    = link_to 'キャンセル', quote_path(@quote)

@@ -7,6 +7,12 @@
         = "（#{year_of_birth(quote.child.date_of_birth)}才#{month_of_birth(quote.child.date_of_birth)}ヶ月）"
       p.text-sm.text-slate-400
         = l quote.created_at, format: :long
+      - if current_user == quote.user
+        .ml-auto.flex.mr-1
+          p.text-sm.text-slate-400
+            = link_to '編集', edit_quote_path(quote), class: 'text-xs cursor-pointer mr-2'
+          p.text-sm.text-slate-400
+            = link_to '削除', quote, data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' }, class: 'text-xs cursor-pointer'
 
     p.leading-relaxed.text-slate-800.text-base
       = quote.content
