@@ -16,6 +16,18 @@ RSpec.describe 'Comment', type: :model do
     end
   end
 
+  context 'コメントが201文字以上の場合' do
+    it '登録失敗すること' do
+      comment = build(:comment, content: 'a' * 200)
+      comment.valid?
+      expect(comment.errors[:content]).not_to include('は200文字以内で入力してください')
+
+      comment = build(:comment, content: 'a' * 201)
+      comment.valid?
+      expect(comment.errors[:content]).to include('は200文字以内で入力してください')
+    end
+  end
+
   context 'quoteが空の場合' do
     it '登録失敗すること' do
       comment = build(:comment, quote: nil)

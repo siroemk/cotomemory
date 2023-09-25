@@ -8,6 +8,18 @@ RSpec.describe 'Quote', type: :model do
     expect(quote).to be_valid
   end
 
+  context '名言が501文字以上の場合' do
+    it '登録失敗すること' do
+      quote = build(:quote, content: 'a' * 500)
+      quote.valid?
+      expect(quote.errors[:content]).not_to include('は500文字以内で入力してください')
+
+      quote = build(:quote, content: 'a' * 501)
+      quote.valid?
+      expect(quote.errors[:content]).to include('は500文字以内で入力してください')
+    end
+  end
+
   context '名言が空の場合' do
     it '登録失敗すること' do
       quote = build(:quote, content: nil)
