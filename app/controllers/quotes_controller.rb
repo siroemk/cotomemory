@@ -10,7 +10,7 @@ class QuotesController < ApplicationController
 
   def show
     @comment = Comment.new
-    @comments = Comment.where(quote_id: params[:id]).includes(:user).order(created_at: :desc)
+    @comments = Comment.where(quote_id: params[:id]).includes(:user).order(created_at: :asc)
   end
 
   def new
@@ -24,7 +24,7 @@ class QuotesController < ApplicationController
     if @quote.save
       respond_to do |format|
         format.html { redirect_to quotes_path, notice: '名言を登録しました' }
-        format.turbo_stream
+        format.turbo_stream { flash.now[:notice] = '名言を登録しました' }
       end
     else
       render :new, status: :unprocessable_entity
