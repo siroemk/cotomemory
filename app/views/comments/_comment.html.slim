@@ -1,6 +1,9 @@
 = turbo_frame_tag comment do
-  p = comment.content
-  p.text-sm.text-slate-500 = comment.user.name
-  p.text-sm.text-slate-500 = l comment.created_at, format: :long
-  - if current_user == comment.user
-    = link_to '削除', quote_comment_path(comment.quote_id, comment.id), data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' }, class: 'text-sm text-slate-500 cursor-pointer'
+  .border-b.p-2
+    .flex
+      p.text-sm.text-slate-600.font-semibold.pr-2 = comment.user.name
+      p.text-sm.text-slate-400 = l comment.created_at, format: :long
+      - if current_user == comment.user
+        p.ml-auto
+          = link_to '削除', quote_comment_path(comment.quote_id, comment.id), data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' }, class: 'text-xs text-slate-400 cursor-pointer'
+    p = comment.content

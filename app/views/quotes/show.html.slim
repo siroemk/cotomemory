@@ -1,13 +1,15 @@
-= render @quote
+.py-4.mb-2.bg-white.rounded.h-full
+  .border-b.pb-2
+    = render @quote
 
-p.text-xs.text-slate-500.text-right
-  | 記録：
-  - if @quote.user.nil?
-    | 退会済みのユーザー
-  - else
-    = @quote.user.name
+    p.text-xs.text-slate-500.text-right.mr-2
+      | 記録：
+      - if @quote.user.nil?
+        | 退会済みのユーザー
+      - else
+        = @quote.user.name
 
-#comments
-  = render partial: 'comments/comment', collection: @comments, as: :comment
+  #comments
+    = render partial: 'comments/comment', collection: @comments, as: :comment
 
-= render 'comments/form', { quote: @quote, comment: @comment }
+  = render 'comments/form', { quote: @quote, comment: @comment }
