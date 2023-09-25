@@ -16,6 +16,18 @@ RSpec.describe 'Child', type: :model do
     end
   end
 
+  context 'こどもの名前が16文字以上の場合' do
+    it '登録失敗すること' do
+      child = build(:child, name: 'a' * 15)
+      child.valid?
+      expect(child.errors[:name]).not_to include('は15文字以内で入力してください')
+
+      child = build(:child, name: 'a' * 16)
+      child.valid?
+      expect(child.errors[:name]).to include('は15文字以内で入力してください')
+    end
+  end
+
   context 'こどもの誕生日が空の場合' do
     it '登録失敗すること' do
       child = build(:child, date_of_birth: nil)
