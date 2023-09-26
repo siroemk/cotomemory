@@ -6,7 +6,7 @@
     = image_tag current_user.avatar.variant(resize: '300x300').processed,
       class: 'w-16 h-16 rounded-full ring-2 ring-gray-300 m-auto max-w-screen-sm'
   - else
-    = image_tag ('default.png'), class: 'w-14 h-14 rounded-full ring-2 ring-gray-300 m-auto max-w-screen-sm'
+    = image_tag 'default.png', class: 'w-14 h-14 rounded-full ring-2 ring-gray-300 m-auto max-w-screen-sm'
 
   = render 'form', user: current_user
 
