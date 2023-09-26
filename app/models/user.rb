@@ -4,7 +4,7 @@ class User < ApplicationRecord
   belongs_to :family
   has_many :quotes, dependent: :nullify
   has_many :comments, dependent: :destroy
-  # has_one_attached :avatar
+  has_one_attached :avatar
 
   validates :name, presence: true
   validates :uid, presence: true
