@@ -1,0 +1,10 @@
+= form_with model: current_user, local: true do |f|
+  .mb-2
+    = f.label :name,
+      class: 'pl-2 py-3 text-sm font-medium'
+  .mb-6
+    = f.text_field :name,
+      class: 'py-3 px-4 w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500'
+  .mb-6.text-center
+    = f.submit '更新する',
+      class: 'py-3 w-64 bg-primary hover:bg-orange-300 rounded-full text-white font-bold cursor-pointer'
