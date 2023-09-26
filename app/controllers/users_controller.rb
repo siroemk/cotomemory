@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     if current_user.update(user_params)
       redirect_to quotes_path, notice: 'ユーザー情報を更新しました'
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 
