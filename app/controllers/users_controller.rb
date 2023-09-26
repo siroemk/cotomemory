@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   def edit; end
 
   def update
+    current_user.avatar.attach(user_params[:avatar]) if user_params[:avatar].present?
     if current_user.update(user_params)
       redirect_to quotes_path, notice: 'ユーザー情報を更新しました'
     else
