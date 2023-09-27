@@ -35,7 +35,7 @@ class QuotesController < ApplicationController
     if @quote.update(quote_params)
       respond_to do |format|
         format.html { redirect_to quotes_path, notice: '名言を更新しました' }
-        format.turbo_stream
+        format.turbo_stream { flash.now[:notice] = '名言を更新しました' }
       end
     else
       render :edit, status: :unprocessable_entity
@@ -44,6 +44,10 @@ class QuotesController < ApplicationController
 
   def destroy
     @quote.destroy
+    respond_to do |format|
+      format.html { redirect_to quote_comments_path(params[:quote_id]), notice: '名言を削除しました' }
+      format.turbo_stream { flash.now[:notice] = '名言を削除しました' }
+    end
   end
 
   private
