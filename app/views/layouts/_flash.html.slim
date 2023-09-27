@@ -1,0 +1,7 @@
+- flash.each do |_flash_type, message|
+  div data-controller="removals"
+    .bg-green-50.m-2.p-3.rounded.flex
+      p.text-sm.text-green-800
+        = message
+      p.text-sm.text-green-800.ml-auto.cursor-pointer data-action='click->removals#remove'
+        | ×
