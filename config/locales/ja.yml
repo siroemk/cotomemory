@@ -10,6 +10,7 @@ ja:
     attributes:
       user:
         name: 名前
+        avatar: プロフィール画像
       child:
         name: こどもの名前
         date_of_birth: 誕生日
