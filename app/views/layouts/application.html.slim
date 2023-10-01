@@ -14,8 +14,8 @@ html.bg-slate-200
     header
       = render 'shared/header'
     main.flex-1
-      - if flash.notice.presence
-        p.bg-amber-50.px-2.py-4.rounded = flash.notice
+      #flash
+        = render 'layouts/flash'
       = yield
     footer
       = render 'shared/footer'

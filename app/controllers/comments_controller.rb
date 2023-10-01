@@ -11,7 +11,7 @@ class CommentsController < ApplicationController
     if @comment.save
       respond_to do |format|
         format.html { redirect_to quote_comments_path(:quote_id), notice: 'コメントしました' }
-        format.turbo_stream
+        format.turbo_stream { flash.now[:notice] = 'コメントしました' }
       end
     else
       @quote = Quote.find(params[:id])
@@ -25,8 +25,8 @@ class CommentsController < ApplicationController
     if current_user.id == @comment.user.id
       @comment.destroy
       respond_to do |format|
-        format.html { redirect_to quote_comments_path(params[:quote_id]), notice: 'コメントしました' }
-        format.turbo_stream
+        format.html { redirect_to quote_comments_path(params[:quote_id]), notice: 'コメントを削除しました' }
+        format.turbo_stream { flash.now[:notice] = 'コメントを削除しました' }
       end
     else
       render 'quotes/show', status: :unprocessable_entity
