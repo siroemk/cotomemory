@@ -1,9 +1,6 @@
 = form_with model: @child, locale: true do |f|
-  - if @child.errors.any?
-    ul
-      - @child.errors.full_messages.each do |message|
-        li.text-rose-600.text-sm.mb-1
-          = message
+  = render 'shared/error_messages', object: f.object
+
   .mb-2
     = f.label :name,
       class: 'pl-2 py-3 text-sm font-medium'
