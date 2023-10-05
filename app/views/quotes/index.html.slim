@@ -2,7 +2,9 @@
 
 .p-2.bg-slate-100.h-full.w-full
   #quotes
-    = render @quotes
+    = turbo_frame_tag "quotes-page-#{@quotes.current_page}"
+      = render @quotes
+      = turbo_frame_tag "quotes-page-#{@quotes.next_page}", loading: :lazy, src: path_to_next_page(@quotes)
 
   - if @quotes.empty?
     #first_message
@@ -25,7 +27,7 @@
         = image_tag 'read_book.png', alt: '本を読んでいるこどもの画像', class: 'w-3/4 m-auto max-w-screen-sm'
 
   div data-controller='modal'
-    .fixed.bottom-14.left-1/2.-translate-x-1/2.-translate-y-1/2.z-10
+    .fixed.bottom-4.left-1/2.-translate-x-1/2.-translate-y-1/2.z-10
       = link_to '', new_quote_path, data: { turbo_frame: 'new_quote' }, class: 'plus_icon'
     .hidden.fixed.overlay.top-0.left-0.w-screen.h-screen.bg-gray-300.bg-opacity-70.z-20  data-modal-target='modal' data-action='turbo:frame-load->modal#open turbo:submit-end->modal#close'
       .absolute.top-1/2.left-1/2.-translate-x-1/2.-translate-y-2/3.w-96.h-96.bg-white.p-6.rounded-lg
