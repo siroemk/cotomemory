@@ -7,7 +7,7 @@ class QuotesController < ApplicationController
     redirect_to new_child_path if current_user.family.children.empty?
 
     children_ids = current_user.family.children.pluck(:id)
-    @quotes = Quote.where(child_id: children_ids).includes(:user, :child).order(created_at: :desc)
+    @quotes = Quote.where(child_id: children_ids).includes(:user, :child).order(created_at: :desc).page(params[:page])
   end
 
   def show
