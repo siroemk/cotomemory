@@ -1,4 +1,4 @@
-# fly.toml app configuration file generated for cotomemory on 2023-07-21T10:40:15+09:00
+# fly.toml app configuration file generated for cotomemory on 2023-09-28T19:55:27+09:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
@@ -7,17 +7,42 @@ app = "cotomemory"
 primary_region = "nrt"
 console_command = "/rails/bin/rails console"
 
-[deploy]
-  release_command = "./bin/rails db:prepare"
+[env]
+  RAILS_STORAGE = "/mnt/volume/storage"
 
-[http_service]
+[experimental]
+  auto_rollback = true
+
+[[services]]
+  http_checks = []
   internal_port = 3000
-  force_https = true
-  auto_stop_machines = true
-  auto_start_machines = true
-  min_machines_running = 0
   processes = ["app"]
+  protocol = "tcp"
+  script_checks = []
+  [services.concurrency]
+    hard_limit = 25
+    soft_limit = 20
+    type = "connections"
+
+  [[services.ports]]
+    force_https = true
+    handlers = ["http"]
+    port = 80
+
+  [[services.ports]]
+    handlers = ["tls", "http"]
+    port = 443
+
+  [[services.tcp_checks]]
+    grace_period = "1s"
+    interval = "15s"
+    restart_limit = 0
+    timeout = "2s"
 
 [[statics]]
   guest_path = "/rails/public"
   url_prefix = "/"
+
+[mounts]
+  source = "storage_volume"
+  destination = "/mnt/volume"
