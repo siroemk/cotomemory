@@ -12,6 +12,7 @@ class TopController < ApplicationController
   def privacy; end
 
   def welcome
-    @invitation_token = params[:invitation_token]
+    family = Family.find_by!(invitation_token: params[:invitation_token])
+    @invitation_token = family.invitation_token
   end
 end
