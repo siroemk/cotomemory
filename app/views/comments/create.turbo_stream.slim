@@ -1,2 +1,2 @@
-= turbo_stream.prepend 'comments', partial: 'comments/comment', locals: { comment: @comment }
+= turbo_stream.append 'comments', partial: 'comments/comment', locals: { comment: @comment }
 = turbo_stream.prepend 'flash', partial: 'layouts/flash'
