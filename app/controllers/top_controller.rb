@@ -3,7 +3,9 @@
 class TopController < ApplicationController
   skip_before_action :authenticate
 
-  def index; end
+  def index
+    redirect_to quotes_path if logged_in?
+  end
 
   def terms; end
 
