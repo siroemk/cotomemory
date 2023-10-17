@@ -2,6 +2,7 @@
 
 class QuotesController < ApplicationController
   before_action :set_quote, only: %i[show edit update destroy]
+  before_action :allow_show_quote_page_only_family, only: %i[show edit update destroy]
 
   def index
     redirect_to new_child_path if current_user.family.children.empty?
@@ -60,5 +61,11 @@ class QuotesController < ApplicationController
 
   def set_quote
     @quote = Quote.find(params[:id])
+  end
+
+  def allow_show_quote_page_only_family
+    return if @quote.child.family_id == current_user.family_id
+
+    redirect_to quotes_path
   end
 end
