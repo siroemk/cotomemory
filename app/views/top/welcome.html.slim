@@ -1,13 +1,14 @@
 - set_meta_tags noindex: true
 
-h1.mb-6.text-center.font-semibold
-  | 家族から招待されています
+.px-4
+  h1.my-8.text-center.font-semibold.text-lg.text-slate-800
+    | 家族から招待されています
 
-p.mb-8.text-center.text-xs
-  | こどもの面白い発言や名言を記録するアプリ「Cotomemory」に招待されています。
-  br
-  | 以下のボタンからログインすると、こどもの情報を家族と共有することができます。
+  p.mb-8.text-center.text-sm
+    | こどもの面白い発言や名言を記録するアプリ「Cotomemory」に招待されています。
+    br
+    | 以下のボタンからログインすると、こどもの情報を家族と共有することができます。
 
-.text-center
-  = button_to 'Googleアカウントでログイン', "/auth/google_oauth2/?invitation_token=#{@invitation_token}", data: { turbo: 'false' },
-    class: 'bg-orange-500 hover:bg-orange-300 py-4 px-20 rounded-full text-white font-bold cursor-pointer'
+  .text-center
+    = button_to 'Googleでログイン', "/auth/google_oauth2/?invitation_token=#{@invitation_token}", data: { turbo: 'false' },
+      class: 'bg-primary hover:bg-opacity-75 transition py-3 px-16 mb-4 rounded-full text-white font-bold shadow-lg'

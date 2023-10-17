@@ -1,18 +1,16 @@
 = form_with model: @child, locale: true do |f|
   = render 'shared/error_messages', object: f.object
 
-  .mb-2
+  .w-80.mx-auto.text-left
     = f.label :name,
-      class: 'pl-2 py-3 text-sm font-medium'
-  .mb-6
+      class: 'pl-2 text-sm font-medium mb-2 block'
     = f.text_field :name,
-      class: 'py-3 px-4 w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500'
-  .mb-2
+      class: 'py-3 px-4 w-80 border-gray-300 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 mb-6',
+      placeholder: 'たろう'
     = f.label :date_of_birth,
-      class: 'pl-2 py-3 text-sm font-medium'
-  .mb-6
+      class: 'pl-2 text-sm font-medium mb-2 block'
     = f.date_select :date_of_birth, { use_month_numbers: true, start_year: Time.zone.now.year, end_year: 2000 },
-      class: 'py-3 px-4 w-1/4 border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500'
+      class: 'py-3 px-4 w-20 border-gray-300 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 mb-6'
   .mb-6.text-center
     = f.submit '保存する',
-      class: 'py-3 w-64 bg-primary hover:bg-orange-300 rounded-full text-white font-bold cursor-pointer'
+      class: 'py-3 w-64 bg-primary hover:bg-opacity-75 transition rounded-full text-white font-bold cursor-pointer'

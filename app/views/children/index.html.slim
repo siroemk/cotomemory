@@ -1,15 +1,24 @@
 - set_meta_tags site: 'Cotomemory', title: 'こどもの一覧', reverse: true
 
-.py-4.px-2.mb-2.bg-white.rounded.h-full
-  h1.mb-6.text-center.font-semibold
+.px-4
+  h1.my-8.text-center.font-semibold.text-lg.text-slate-800
     | こどもの一覧
 
   #children
-    = render @children
-
-  - if @children.empty?
-    | こどもの情報が登録されていません。
-
-  .text-right.text-sm.mt-4
+    - if @children.empty?
+      | こどもの情報が登録されていません。
+    - else
+      table.text-sm.w-full
+        thead
+          tr.bg-slate-50
+            td.p-2
+              | なまえ
+            td.w-30.p-2
+              | 誕生日
+            td.w-20.p-2
+              |
+        tbody
+          = render @children
+  .text-center.mt-10.mb-6
     = link_to 'こどもを追加する', new_child_path,
-      class: 'font-bold text-slate-600 cursor-pointer'
+      class: 'bg-primary hover:bg-opacity-75 transition py-3 px-16 rounded-full text-white font-bold'

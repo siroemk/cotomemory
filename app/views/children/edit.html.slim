@@ -1,11 +1,11 @@
 - set_meta_tags site: 'Cotomemory', title: 'こどもの編集', reverse: true
 
-.py-4.px-2.mb-2.bg-white.rounded.h-full
-  h1.mb-6.text-center.font-semibold
+.px-4
+  h1.my-8.text-center.font-semibold.text-lg.text-slate-800
     | こどもの情報を修正する
 
   = render 'form', child: @child
 
-  .text-right.text-xs.text-gray-700
+  .text-right
     = link_to 'こどもの情報を削除する', child_path(@child), data: { turbo_method: :delete, turbo_confirm: 'こどもの情報を削除すると名言も削除されます。本当に削除しますか？' },
-      class: 'text-sm text-slate-500 cursor-pointer'
+      class: 'text-sm text-slate-500 hover:underline'

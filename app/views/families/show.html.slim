@@ -1,18 +1,18 @@
 - set_meta_tags site: 'Cotomemory', title: '家族を招待する', reverse: true
 
-.py-4.px-2.mb-2.bg-white.rounded.h-full
-  h1.mb-6.text-center.font-semibold
+.px-4
+  h1.my-8.text-center.font-semibold.text-lg.text-slate-800
     | 家族を招待する
 
-  p.mb-8.text-center.text-xs
-    | 家族に以下のURLを共有して登録してもらおう！
+  p.mb-8.text-center.text-sm
+    | 家族に以下のURLを共有して登録してもらおう。
     br
     | 以下のURLからログインすると、こどもの情報を家族で共有することができます。
 
   .mb-10.py-3.px-4.w-full.bg-orange-50.rounded-md.text-sm
     p #{request.protocol}#{request.host}/welcome?invitation_token=#{@family.invitation_token}
 
-  .mx-2
+  .mx-2.mb-6
     h2.mb-6.pb-1.border-b-2.border-slate-200
       | 家族の一覧
     - if @users.empty?

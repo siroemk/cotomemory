@@ -1,16 +1,16 @@
 = turbo_frame_tag comment do
-  .border-b.p-2
+  .border-b.py-2.px-4
     .flex
-      .mr-1.w-6
+      .mr-2.w-8
         - if comment.user.avatar.attached?
-          = image_tag comment.user.avatar, class: 'w-6 h-6 rounded-full ring-1 ring-gray-300 dark:ring-gray-500'
+          = image_tag comment.user.avatar, class: 'w-8 h-8 rounded-full ring-1 ring-gray-300 dark:ring-gray-500'
         - else
-          = image_tag 'default.png', class: 'w-6 h-6 rounded-full mr-1'
+          = image_tag 'default.png', class: 'w-8 h-8 rounded-full'
       .flex-1
         .flex
           p.text-sm.text-slate-600.font-semibold.pr-2 = comment.user.name
           p.text-sm.text-slate-400 = l comment.created_at, format: :long
           - if current_user == comment.user
             p.ml-auto
-              = link_to '削除', quote_comment_path(comment.quote_id, comment.id), data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' }, class: 'text-xs text-slate-400 cursor-pointer'
-        p = comment.content
+              = link_to '削除', quote_comment_path(comment.quote_id, comment.id), data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' }, class: 'text-sm text-slate-400'
+        p.leading-relaxed.text-slate-800 = comment.content
