@@ -2,6 +2,7 @@
 
 class ChildrenController < ApplicationController
   before_action :set_child, only: %i[edit update destroy]
+  before_action :allow_show_children_page_only_family, only: %i[edit update destroy]
 
   def index
     @children = Child.where(family_id: current_user.family_id).order(created_at: :desc)
@@ -47,5 +48,11 @@ class ChildrenController < ApplicationController
 
   def set_child
     @child = Child.find(params[:id])
+  end
+
+  def allow_show_children_page_only_family
+    return if @child.family_id == current_user.family_id
+
+    redirect_to children_path
   end
 end
