@@ -1,2 +1,4 @@
 = turbo_stream.append 'comments', partial: 'comments/comment', locals: { comment: @comment }
 = turbo_stream.prepend 'flash', partial: 'layouts/flash'
+= turbo_stream.replace 'new_message'
+  = render 'comments/form', { quote: @quote, comment: Comment.new }
