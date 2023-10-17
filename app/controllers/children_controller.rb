@@ -11,9 +11,7 @@ class ChildrenController < ApplicationController
     @child = Child.new
   end
 
-  def edit
-    @child = Child.find(params[:id])
-  end
+  def edit; end
 
   def create
     @child = Child.new(child_params)
@@ -26,9 +24,8 @@ class ChildrenController < ApplicationController
   end
 
   def update
-    @child = Child.find(params[:id])
     if @child.update(child_params)
-      redirect_to quotes_path, notice: 'こどもの情報を登録しました'
+      redirect_to quotes_path, notice: 'こどもの情報を編集しました'
     else
       render :edit, status: :unprocessable_entity
     end
@@ -38,7 +35,7 @@ class ChildrenController < ApplicationController
     if @child.destroy
       redirect_to quotes_path, notice: 'こどもの情報を削除しました'
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 
