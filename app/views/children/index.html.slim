@@ -1,7 +1,7 @@
 - set_meta_tags site: 'Cotomemory', title: 'こどもの一覧', reverse: true
 
 .px-4
-  h1.my-8.text-center.font-semibold.text-lg.text-slate-800
+  h1.title
     | こどもの一覧
 
   #children
@@ -20,5 +20,4 @@
         tbody
           = render @children
   .text-center.mt-10.mb-6
-    = link_to 'こどもを追加する', new_child_path,
-      class: 'bg-primary hover:bg-opacity-75 transition py-3 px-16 rounded-full text-white font-bold'
+    = link_to 'こどもを追加する', new_child_path, class: 'primary-btn px-16'
