@@ -6,7 +6,8 @@
 
   #children
     - if @children.empty?
-      | こどもの情報が登録されていません。
+      p.text-sm.text-center
+        | こどもの情報が登録されていません。
     - else
       table.text-sm.w-full
         thead
