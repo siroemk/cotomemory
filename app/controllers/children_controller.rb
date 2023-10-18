@@ -2,6 +2,7 @@
 
 class ChildrenController < ApplicationController
   before_action :set_child, only: %i[edit update destroy]
+  before_action :allow_show_children_page_only_family, only: %i[edit update destroy]
 
   def index
     @children = Child.where(family_id: current_user.family_id).order(created_at: :desc)
@@ -11,9 +12,7 @@ class ChildrenController < ApplicationController
     @child = Child.new
   end
 
-  def edit
-    @child = Child.find(params[:id])
-  end
+  def edit; end
 
   def create
     @child = Child.new(child_params)
@@ -26,9 +25,8 @@ class ChildrenController < ApplicationController
   end
 
   def update
-    @child = Child.find(params[:id])
     if @child.update(child_params)
-      redirect_to quotes_path, notice: 'こどもの情報を登録しました'
+      redirect_to quotes_path, notice: 'こどもの情報を編集しました'
     else
       render :edit, status: :unprocessable_entity
     end
@@ -38,7 +36,7 @@ class ChildrenController < ApplicationController
     if @child.destroy
       redirect_to quotes_path, notice: 'こどもの情報を削除しました'
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 
@@ -50,5 +48,11 @@ class ChildrenController < ApplicationController
 
   def set_child
     @child = Child.find(params[:id])
+  end
+
+  def allow_show_children_page_only_family
+    return if @child.family_id == current_user.family_id
+
+    redirect_to children_path
   end
 end

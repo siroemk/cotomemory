@@ -1,8 +1,17 @@
-.py-4.mb-2.bg-white.rounded.h-full
-  .border-b.pb-2
-    = render @quote
+.py-4
+  .border-b.pb-2.px-4
+    .flex.pb-2
+      p.text-slate-600.font-semibold
+        = @quote.child.name
+      p.text-slate-600.font-semibold
+        = "（#{year_of_birth(@quote.child.date_of_birth)}才#{month_of_birth(@quote.child.date_of_birth)}ヶ月）"
+      p.text-sm.text-slate-400
+        = l @quote.created_at, format: :long
 
-    p.text-xs.text-slate-500.text-right.mr-2
+    p.leading-relaxed.text-slate-800.text-base
+      = @quote.content
+
+    p.text-xs.text-slate-500.text-right
       | 記録：
       - if @quote.user.nil?
         | 退会済みのユーザー
@@ -11,5 +20,5 @@
 
   #comments
     = render partial: 'comments/comment', collection: @comments, as: :comment
-
-  = render 'comments/form', { quote: @quote, comment: @comment }
+  #new_message
+    = render 'comments/form', { quote: @quote, comment: @comment }

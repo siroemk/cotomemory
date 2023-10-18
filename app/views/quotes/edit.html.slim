@@ -1,4 +1,20 @@
 = turbo_frame_tag @quote do
   .py-4.px-2.mb-2.bg-white.rounded
-    = render 'form', quote: @quote
-    = link_to 'キャンセル', quote_path(@quote)
+    = form_with model: @quote, locale: true do |f|
+      - if @quote.errors.any?
+        ul
+          - @quote.errors.full_messages.each do |message|
+            li.text-rose-600.text-sm.mb-1.text-left
+              = message
+
+      .mb-4.text-left
+        = f.collection_select :child_id, Child.where(family_id: current_user.family_id).order(:created_at), :id, :name, {},
+          class: 'py-3 px-4 w-40 border-gray-300 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500'
+      .mb-4
+        = f.text_area :content,
+          class: 'py-3 px-4 block w-full h-32 border-gray-300 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500'
+      .text-right
+        = link_to 'キャンセル', quotes_path,
+          class: 'bg-neutral-300 hover:bg-opacity-75 transition py-2 px-2 my-4 w-40 rounded-full text-white font-bold text-white inline-block text-center mr-2'
+        = f.submit '保存する',
+          class: 'bg-primary hover:bg-opacity-75 transition py-2 px-2 my-4 w-40 rounded-full text-white font-bold text-white inline-block'

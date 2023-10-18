@@ -1,7 +1,7 @@
 .flex
   .mr-2.w-6
     - if user.avatar.attached?
-      = image_tag user.avatar, class: 'w-6 h-6 rounded-full ring-1 ring-gray-300 dark:ring-gray-500'
+      = image_tag user.avatar.variant(resize_to_limit: [24, 24]), class: 'w-6 h-6 rounded-full ring-1 ring-gray-300 dark:ring-gray-500'
     - else
       = image_tag 'default.png', class: 'w-6 h-6 rounded-full mr-1 ring-1 ring-gray-300 dark:ring-gray-500'
   p.text-sm

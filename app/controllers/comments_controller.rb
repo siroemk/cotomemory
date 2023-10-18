@@ -8,13 +8,13 @@ class CommentsController < ApplicationController
   def create
     @comment = current_user.comments.build(comment_params)
     @comment.quote_id = params[:quote_id]
+    @quote = Quote.find(params[:quote_id])
     if @comment.save
       respond_to do |format|
         format.html { redirect_to quote_comments_path(:quote_id), notice: 'コメントしました' }
         format.turbo_stream { flash.now[:notice] = 'コメントしました' }
       end
     else
-      @quote = Quote.find(params[:id])
       render 'quotes/show', status: :unprocessable_entity
     end
   end

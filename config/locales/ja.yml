@@ -13,7 +13,7 @@ ja:
         avatar: プロフィール画像
       child:
         name: こどもの名前
-        date_of_birth: 誕生日
+        date_of_birth: こどもの誕生日
       quote:
         content: 名言の内容
       comment:

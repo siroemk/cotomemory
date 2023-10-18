@@ -2,12 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
-/*
-
 @layer components {
-  .btn-primary {
-    @apply py-2 px-4 bg-blue-200;
+  .title {
+    @apply my-8 text-center font-semibold text-lg text-slate-800;
+  }
+
+  .login-btn {
+    @apply bg-primary hover:bg-opacity-75 transition py-3 px-16 mb-4 rounded-full text-white font-bold shadow-lg;
+  }
+
+  .primary-btn {
+    @apply py-3 w-64 bg-primary hover:bg-opacity-75 transition rounded-full text-white font-bold cursor-pointer;
   }
 }
-
-*/

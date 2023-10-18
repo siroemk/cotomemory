@@ -1,15 +1,10 @@
-.bg-white
-  - if current_page?(quotes_path)
-    .h-10
-      p.text-xs.text-gray-500.text-center.p-3
-        = link_to 'Cotomemory', quotes_path
-
-  - else
-    .h-20
-      ul.flex.justify-center.py-4.border-t.border-slate-200
-        li.text-xs.px-8.text-gray-500
-          = link_to '利用規約', terms_path
-        li.text-xs.px-8.text-gray-500
-          = link_to 'プライバシーポリシー', privacy_path
-      p.text-xs.text-gray-400.text-center.pb-2
+.bg-slate-600
+  - unless current_page?(quotes_path)
+    .h-16
+      ul.flex.justify-center.py-3.border-t.border-slate-200
+        li.text-xs.px-8.text-white
+          = link_to '利用規約', terms_path, class: 'hover:underline'
+        li.text-xs.px-8.text-white
+          = link_to 'プライバシーポリシー', privacy_path, class: 'hover:underline'
+      p.text-xs.text-white.text-center.pb-2
         | © 2023 siroemk

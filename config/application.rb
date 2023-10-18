@@ -36,5 +36,7 @@ module Cotomemory
 
     config.time_zone = 'Asia/Tokyo'
     config.i18n.default_locale = :ja
+
+    config.action_view.preload_links_header = false
   end
 end

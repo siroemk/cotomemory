@@ -1,64 +1,64 @@
 .bg-white.border-b.border-slate-100
+  .my-10
+    = image_tag 'logo_square.png', alt: '名言トップページの画像', class: 'w-48 m-auto max-w-screen-sm'
   .text-center.mb-14
-    = button_to 'Googleでログイン',
-      '/auth/google_oauth2/', data: { turbo: 'false' },
-      class: 'bg-primary hover:bg-orange-300 py-3 px-16 mb-4 rounded-full text-white font-bold cursor-pointer shadow-lg'
-    p.text-xs.text-gray-500.mx-10
+    = button_to 'Googleでログイン', '/auth/google_oauth2/', data: { turbo: 'false' }, class: 'login-btn'
+    p.text-xs.text-gray-500
       | ※上記ボタンをクリックすることで
       br
       | 利用規約・プライバシーポリシーに
       br
       | 同意したものとみなします。
 .bg-slate-50.text-center.py-8.border-b.border-slate-100
-  h2.pb-8.text-slate-600.text-xl.font-semibold
+  h1.title
     | こどもの面白い名言を記録しよう
   .mb-6
-    = image_tag 'child_quote.png', alt: 'こどもの名言の画像', class: 'w-1/2 m-auto max-w-screen-sm'
-  p.pb-6.leading-relaxed.text-slate-600.text-base
-    | こどもの面白い名言に思わず笑ってしまったり
-    br
-    | 可愛い発言に癒されたり
+    = image_tag 'child_quote.png', alt: 'こどもの名言の画像', class: 'w-60 m-auto max-w-screen-sm'
+  p.pb-6.leading-relaxed.text-slate-800.text-sm
+    | こどもの可愛い発言に癒されたり
     br
     | ふとした言葉で成長を感じたり...
     br
     | そんな経験はありませんか？
-  p.pb-8.leading-relaxed.text-slate-600.text-lg.font-semibold
-    | そんなコトバの思い出を
+  p.pb-8.leading-relaxed.text-slate-800.font-semibold
+    | そんなこどもの名言を
     br
     | "Cotomemory"で記録しよう
   .mb-10
-    = image_tag 'quotes_image.png', alt: '名言トップページの画像', class: 'w-5/6 m-auto max-w-screen-sm shadow-xl'
-  .text-center.mb-10
-    = button_to 'Googleでログイン',
-        '/auth/google_oauth2/', data: { turbo: 'false' },
-        class: 'bg-primary hover:bg-orange-300 py-3 px-16 mb-4 rounded-full text-white font-bold cursor-pointer shadow-lg'
+    = image_tag 'quotes_image.png', alt: '名言トップページの画像', class: 'w-3/4 m-auto max-w-screen-sm shadow-xl border'
+  .text-center
+    = button_to 'Googleでログイン', '/auth/google_oauth2/', data: { turbo: 'false' }, class: 'login-btn'
 .bg-white.text-center.py-8.border-b.border-slate-100
-  h2.pb-8.text-slate-600.text-xl.font-semibold
+  h2.pb-8.text-slate-800.text-xl.font-semibold
     | カンタンに名言を記録できる
   .mb-6
-    = image_tag 'read_book.png', alt: '本を読んでいるこどもの画像', class: 'w-3/4 m-auto max-w-screen-sm'
-  p.pb-6.leading-relaxed.text-slate-600.text-sm
+    = image_tag 'read_book.png', alt: '本を読んでいるこどもの画像', class: 'w-60 m-auto max-w-screen-sm'
+  p.pb-6.leading-relaxed.text-slate-800.text-sm
     | 登録フォームがシンプルなので
     br
-    | 忙しくても簡単に記録できる！
+    | 忙しくても簡単に記録できます。
+    br
+    | 大切な思い出を忘れません。
+  .mb-10
+    = image_tag 'quotes_form.png', alt: '名言投稿画面の画像', class: 'w-2/3 m-auto max-w-screen-sm shadow-xl border'
 .bg-slate-50.text-center.py-8.border-b.border-slate-100
-  h2.pb-8.text-slate-600.text-xl.font-semibold
+  h2.pb-8.text-slate-800.text-xl.font-semibold
     | 家族に名言を共有できる
   .mb-6
-    = image_tag 'share_family.png', alt: '家族の画像', class: 'w-5/6 m-auto max-w-screen-sm'
-  p.pb-2.leading-relaxed.text-slate-600.text-sm
+    = image_tag 'share_family.png', alt: '家族の画像', class: 'w-60 m-auto max-w-screen-sm'
+  p.pb-6.leading-relaxed.text-slate-800.text-sm
     | 家族に名言を共有できる"招待機能"。
     br
     | 招待URLからログインすることで
     br
-    | 家族と情報を共有できます！
-.bg-white.py-6.border-b.border-slate-100
+    | 家族と情報を共有できます。
+  .mb-10
+    = image_tag 'quotes_share.png', alt: 'コメント欄の画像', class: 'w-2/3 m-auto max-w-screen-sm shadow-xl border'
+.bg-white.py-8.border-b.border-slate-100
   = image_tag 'logo.png', alt: 'Cotomemoryのロゴ画像', class: 'w-40 py-6 m-auto max-w-screen-sm'
   .text-center.mb-10
-    = button_to 'Googleでログイン',
-      '/auth/google_oauth2/', data: { turbo: 'false' },
-      class: 'bg-primary hover:bg-orange-300 py-3 px-16 mb-4 rounded-full text-white font-bold cursor-pointer shadow-lg'
-    p.text-xs.text-gray-500.mx-10
+    = button_to 'Googleでログイン', '/auth/google_oauth2/', data: { turbo: 'false' }, class: 'login-btn'
+    p.text-xs.text-gray-500
       | ※上記ボタンをクリックすることで
       br
       | 利用規約・プライバシーポリシーに
