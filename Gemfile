@@ -61,6 +61,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'dockerfile-rails', '>= 1.5'
   gem 'i18n_generators'
   gem 'rubocop', require: false
   gem 'rubocop-performance', require: false
@@ -82,10 +83,9 @@ group :test do
   gem 'webdrivers'
 end
 
+gem 'aws-sdk-s3', require: false
+gem 'kaminari'
+gem 'meta-tags'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-rails_csrf_protection'
 gem 'tailwindcss-rails', '~> 2.0'
-gem 'dockerfile-rails', '>= 1.5', group: :development
-gem 'kaminari'
-gem 'meta-tags'
-gem 'aws-sdk-s3', require: false
