@@ -7,9 +7,6 @@ app = "cotomemory"
 primary_region = "nrt"
 console_command = "/rails/bin/rails console"
 
-[env]
-  RAILS_STORAGE = "/mnt/volume/storage"
-
 [experimental]
   auto_rollback = true
 
@@ -42,7 +39,3 @@ console_command = "/rails/bin/rails console"
 [[statics]]
   guest_path = "/rails/public"
   url_prefix = "/"
-
-[mounts]
-  source = "storage_volume"
-  destination = "/mnt/volume"
