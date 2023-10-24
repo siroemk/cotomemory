@@ -5,7 +5,7 @@ class ChildrenController < ApplicationController
   before_action :allow_show_children_page_only_family, only: %i[edit update destroy]
 
   def index
-    @children = Child.where(family_id: current_user.family_id).order(created_at: :desc)
+    @children = current_user.family.children.order(created_at: :asc)
   end
 
   def new
@@ -15,8 +15,7 @@ class ChildrenController < ApplicationController
   def edit; end
 
   def create
-    @child = Child.new(child_params)
-    @child.family_id = current_user.family_id
+    @child = current_user.family.children.new(child_params)
     if @child.save
       redirect_to quotes_path, notice: 'こどもの情報を登録しました'
     else
