@@ -25,18 +25,16 @@ class ChildrenController < ApplicationController
 
   def update
     if @child.update(child_params)
-      redirect_to quotes_path, notice: 'こどもの情報を編集しました'
+      redirect_to children_path, notice: 'こどもの情報を編集しました'
     else
       render :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
-    if @child.destroy
-      redirect_to quotes_path, notice: 'こどもの情報を削除しました'
-    else
-      render :edit, status: :unprocessable_entity
-    end
+    @child.destroy
+
+    redirect_to children_path, notice: 'こどもの情報を削除しました', status: :see_other
   end
 
   private
