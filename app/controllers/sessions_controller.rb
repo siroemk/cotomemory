@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class SessionsController < ApplicationController
-  skip_before_action :authenticate, only: :create
+  skip_before_action :login_required, only: :create
 
   def create
     user = User.from_omniauth(request.env['omniauth.auth'])
