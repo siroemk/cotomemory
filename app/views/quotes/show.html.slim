@@ -4,7 +4,7 @@
       p.text-slate-600.font-semibold
         = @quote.child.name
       p.text-slate-600.font-semibold
-        = "（#{year_of_birth(@quote.child.date_of_birth)}才#{month_of_birth(@quote.child.date_of_birth)}ヶ月）"
+        = convert_to_age(@quote.child.date_of_birth)
       p.text-sm.text-slate-400
         = l @quote.created_at, format: :long
 
