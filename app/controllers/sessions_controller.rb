@@ -17,11 +17,7 @@ class SessionsController < ApplicationController
 
     if user.save
       session[:user_id] = user.id
-      if Child.find_by(family_id: user.family_id).nil?
-        redirect_to new_child_path, notice: 'ログインしました'
-      else
-        redirect_to quotes_path, notice: 'ログインしました'
-      end
+      redirect_to quotes_path, notice: 'ログインしました'
     else
       redirect_to root_path
     end
