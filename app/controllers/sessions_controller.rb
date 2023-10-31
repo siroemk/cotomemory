@@ -5,15 +5,7 @@ class SessionsController < ApplicationController
 
   def create
     user = User.from_omniauth(request.env['omniauth.auth'])
-    if user.family_id.nil?
-      invitation_token = request.env['omniauth.params']['invitation_token']
-      if invitation_token.present?
-        family = Family.find_by!(invitation_token:)
-        user.family = family
-      else
-        user.build_family(invitation_token: SecureRandom.urlsafe_base64)
-      end
-    end
+    user.create_or_belong_family(request.env['omniauth.params']['invitation_token']) if user.family_id.nil?
 
     if user.save
       session[:user_id] = user.id
