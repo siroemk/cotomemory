@@ -14,6 +14,7 @@ class UsersController < ApplicationController
 
   def destroy
     current_user.destroy!
+    current_user.family.destoy_when_all_families_left!
     reset_session
     redirect_to root_path, notice: 'アカウントを削除しました'
   end
