@@ -17,5 +17,23 @@ RSpec.describe 'Top', type: :system do
         expect(page).to have_no_css '.navbar'
       end
     end
+
+  describe '#welcome' do
+    context 'ログインしていないユーザーが招待URLにアクセスした場合' do
+      it '招待ページが表示される' do
+        visit "http://127.0.0.1/welcome?invitation_token=#{user.family.invitation_token}"
+        expect(page).to have_content '家族から招待されています'
+        expect(current_path).to eq welcome_path
+      end
+    end
+
+    context 'ログインしているユーザーが招待URLにアクセスした場合' do
+      it '名言一覧が表示される' do
+        create(:child, family: user.family)
+        sign_in_as(user)
+        visit "http://127.0.0.1/welcome?invitation_token=#{user.family.invitation_token}"
+        expect(current_path).to eq quotes_path
+      end
+    end
   end
 end
