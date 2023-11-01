@@ -57,7 +57,7 @@ RSpec.describe 'Children', type: :system do
 
   describe '#edit' do
     it 'こどもを編集できること' do
-      visit edit_child_path(child) 
+      visit edit_child_path(child)
       fill_in 'child[name]', with: '太郎'
       select '2016', from: 'child_date_of_birth_1i'
       select '8', from: 'child_date_of_birth_2i'
