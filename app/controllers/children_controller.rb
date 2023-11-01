@@ -15,8 +15,8 @@ class ChildrenController < ApplicationController
   def edit; end
 
   def create
-    child = current_user.family.children.new(child_params)
-    if child.save
+    @child = current_user.family.children.new(child_params)
+    if @child.save
       redirect_to quotes_path, notice: 'こどもの情報を登録しました'
     else
       render :new, status: :unprocessable_entity
