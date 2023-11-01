@@ -18,6 +18,22 @@ RSpec.describe 'Top', type: :system do
       end
     end
 
+    context 'ログインしているユーザーが/にアクセスした場合' do
+      it '名言一覧が表示されること' do
+        create(:child, family: user.family)
+        sign_in_as(user)
+        visit root_path
+        expect(current_path).to eq quotes_path
+      end
+
+      it 'ハンバーガーメニューが表示されること' do
+        sign_in_as(user)
+        visit root_path
+        expect(page).to have_css '.navbar'
+      end
+    end
+  end
+
   describe '#welcome' do
     context 'ログインしていないユーザーが招待URLにアクセスした場合' do
       it '招待ページが表示される' do
