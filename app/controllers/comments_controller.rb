@@ -1,10 +1,6 @@
 # frozen_string_literal: true
 
 class CommentsController < ApplicationController
-  def new
-    @comment = Comment.new
-  end
-
   def create
     @comment = current_user.comments.build(comment_params)
     @comment.quote_id = params[:quote_id]
