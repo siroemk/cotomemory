@@ -20,5 +20,5 @@
 
   #comments
     = render partial: 'comments/comment', collection: @comments, as: :comment
-  #new_message
-    = render 'comments/form', { quote: @quote, comment: @comment }
+
+  = render 'comments/form', { quote: @quote, comment: @comment }
