@@ -14,11 +14,17 @@ class User < ApplicationRecord
   def self.from_omniauth(auth_hash)
     provider = auth_hash[:provider]
     uid = auth_hash[:uid]
+    name = auth_hash[:info][:name]
+    User.where(provider:, uid:).first_or_initialize(name:)
+  end
 
-    existing_user = User.find_by(uid:)
-    name = existing_user ? existing_user.name : auth_hash[:info][:name]
-
-    User.where(provider:, uid:, name:).first_or_initialize
+  def create_or_belong_family(invitation_token)
+    if invitation_token.present?
+      family = Family.find_by!(invitation_token:)
+      self.family = family
+    else
+      build_family(invitation_token: SecureRandom.urlsafe_base64)
+    end
   end
 
   private

@@ -1,13 +1,11 @@
 # frozen_string_literal: true
 
 module QuotesHelper
-  def year_of_birth(date_of_birth)
-    passed_month = (Time.zone.now - date_of_birth.to_time).to_i / 1.month
-    (passed_month / 12).to_s
-  end
+  def convert_to_age(date_of_birth)
+    age_year = (Time.zone.today.strftime('%Y%m%d').to_i - date_of_birth.strftime('%Y%m%d').to_i) / 10_000
+    age_month = (Time.zone.today.strftime('%m%d').to_i - date_of_birth.strftime('%m%d').to_i) / 100
+    age_month = age_month.negative? ? age_month + 12 : age_month
 
-  def month_of_birth(date_of_birth)
-    passed_month = (Time.zone.now - date_of_birth.to_time).to_i / 1.month
-    (passed_month % 12).to_s
+    "（#{age_year}才#{age_month}ヶ月）"
   end
 end

@@ -33,10 +33,9 @@ module Cotomemory
 
     # Don't generate system test files.
     config.generators.system_tests = nil
-
     config.time_zone = 'Asia/Tokyo'
     config.i18n.default_locale = :ja
-
     config.action_view.preload_links_header = false
+    config.action_view.field_error_proc = Proc.new { |html_tag, instance| html_tag }
   end
 end

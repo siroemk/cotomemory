@@ -1,5 +1,10 @@
 = form_with model: @child, locale: true do |f|
-  = render 'shared/error_messages', object: f.object
+  - if f.object.errors.any?
+    ul
+      - f.object.errors.full_messages.each do |message|
+        li.bg-rose-50.my-2.p-3.w-80.mx-auto.rounded
+          p.text-rose-600.text-sm
+            = message
 
   .w-80.mx-auto.text-left
     = f.label :name,

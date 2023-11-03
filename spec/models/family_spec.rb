@@ -2,17 +2,19 @@
 
 require 'rails_helper'
 
-RSpec.describe 'Family', type: :model do
-  it 'ファクトリが有効であること' do
-    family = build(:family)
-    expect(family).to be_valid
-  end
+RSpec.describe Family, type: :model do
+  describe '#destoy_when_all_families_left!' do
+    it '全ての家族が退会したらFamilyを削除する' do
+      mother = create(:user)
+      mother.destroy!
+      expect { mother.family.destoy_when_all_families_left! }.to change(Family, :count).by(-1)
+    end
 
-  context 'invitation_tokenが空の場合' do
-    it '登録失敗すること' do
-      family = build(:family, invitation_token: nil)
-      family.valid?
-      expect(family.errors[:invitation_token]).to include('を入力してください')
+    it 'Familyに紐づく家族がいればFamilyを残す' do
+      mother = create(:user)
+      create(:user, name: 'パパ', family: mother.family)
+      mother.destroy!
+      expect { mother.family.destoy_when_all_families_left! }.to change(Family, :count).by(0)
     end
   end
 end

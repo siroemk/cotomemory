@@ -10,7 +10,7 @@
     | 以下のURLからログインすると、こどもの情報を家族で共有することができます。
 
   .mb-10.py-3.px-4.w-full.bg-orange-50.rounded-md.text-sm
-    p #{request.protocol}#{request.host}/welcome?invitation_token=#{@family.invitation_token}
+    p #{request.protocol}#{request.host_with_port}/welcome?invitation_token=#{@family.invitation_token}
 
   .mx-2.mb-6
     h2.mb-6.pb-1.border-b-2.border-slate-200

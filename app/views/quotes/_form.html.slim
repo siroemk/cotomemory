@@ -1,7 +1,7 @@
 = form_with model: quote, locale: true do |f|
-  - if quote.errors.any?
+  - if f.object.errors.any?
     ul
-      - quote.errors.full_messages.each do |message|
+      - f.object.errors.full_messages.each do |message|
         li.text-rose-600.text-sm.mb-1.text-left
           = message
 

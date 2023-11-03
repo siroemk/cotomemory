@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   def update
     current_user.avatar.attach(user_params[:avatar]) if user_params[:avatar].present?
     if current_user.update(user_params)
-      redirect_to quotes_path, notice: 'ユーザー情報を更新しました'
+      redirect_to user_path, notice: 'ユーザー情報を更新しました'
     else
       render :edit, status: :unprocessable_entity
     end
@@ -14,6 +14,7 @@ class UsersController < ApplicationController
 
   def destroy
     current_user.destroy!
+    current_user.family.destoy_when_all_families_left!
     reset_session
     redirect_to root_path, notice: 'アカウントを削除しました'
   end

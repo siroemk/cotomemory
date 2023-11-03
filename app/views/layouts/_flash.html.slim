@@ -1,7 +1,14 @@
-- flash.each do |_flash_type, message|
+- flash.each do |flash_type, message|
   div data-controller="removals"
-    .bg-green-50.m-2.p-3.rounded.flex
-      p.text-sm.text-green-800
-        = message
-      p.text-sm.text-green-800.ml-auto.cursor-pointer data-action='click->removals#remove'
-        | ×
+    - if flash_type == 'notice'
+      .bg-green-50.m-2.p-3.rounded.flex
+        p.text-sm.text-green-800
+          = message
+        p.text-sm.text-green-800.ml-auto.cursor-pointer data-action='click->removals#remove'
+          | ×
+    - if flash_type == 'alert'
+      .bg-rose-50.m-2.p-3.rounded.flex
+          p.text-sm.text-rose-800
+            = message
+          p.text-sm.text-rose-800.ml-auto.cursor-pointer data-action='click->removals#remove'
+            | ×
