@@ -71,8 +71,8 @@ class QuotesController < ApplicationController
   end
 
   def allow_show_quote_page_only_family
-    return if @quote.child.family_id == current_user.family_id
+    return if @quote.child.family == current_user.family
 
-    redirect_to quotes_path
+    redirect_to quotes_path, alert: 'ご指定のページはアクセスできませんでした'
   end
 end

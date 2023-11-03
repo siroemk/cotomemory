@@ -48,6 +48,8 @@ class ChildrenController < ApplicationController
   end
 
   def allow_show_children_page_only_family
-    redirect_to children_path, notice: '他の家族の情報にアクセスすることはできません' unless @child.family_id == current_user.family_id
+    return if @child.family == current_user.family
+
+    redirect_to children_path, alert: 'ご指定のページはアクセスできませんでした'
   end
 end
