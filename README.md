@@ -26,7 +26,7 @@ https://cotomemory.com/
 
 ## 招待機能の使い方
 ### 1. 招待する側の人が招待URLを取得する
-<img width="30%" alt="招待画面" src="https://github.com/siroemk/cotomemory/assets/31835314/4fe519e1-b96e-4080-a4cb-949078efcf43">
+<img width="30%" alt="招待画面" src="https://github.com/siroemk/cotomemory/assets/31835314/101811ad-d086-4aeb-b5d9-18bf681e1443">
 
 ログイン後にメニューの「家族を招待する」にアクセスすると招待URLが表示されます。  
 このURLを招待したい家族に伝えてください。
