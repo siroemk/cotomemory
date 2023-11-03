@@ -1,6 +1,11 @@
 = turbo_frame_tag 'comment_form' do
   = form_with model: [quote, comment] do |f|
-    = render 'shared/error_messages', object: f.object
+    - if f.object.errors.any?
+      ul
+        - f.object.errors.full_messages.each do |message|
+          li.bg-rose-50.my-2.p-3.rounded.mx-4
+            p.text-rose-600.text-sm
+              = message
 
     .my-4.flex.px-4
       = f.text_area :content,
