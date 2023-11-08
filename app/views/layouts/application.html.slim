@@ -12,8 +12,9 @@ html.bg-slate-200
     = javascript_importmap_tags
     = favicon_link_tag 'favicon.ico'
   body.max-w-screen-sm.mx-auto.h-screen.flex.flex-col
-    header
-      = render 'shared/header'
+    - unless current_page?(root_path)
+      header
+        = render 'shared/header'
     main.flex-1.pt-14.bg-white
       #flash
         = render 'layouts/flash'
