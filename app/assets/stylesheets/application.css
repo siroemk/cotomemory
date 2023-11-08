@@ -66,20 +66,21 @@
   width: 1.15rem;
   height: 0.15rem;
   border-radius: 0.25rem;
-  top: 1.25rem;
-  left: 0.7rem;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .plus_icon::after {
   content: '';
   position: absolute;
   background: #fff;
-  width: 1.15rem;
-  height: 0.15rem;
+  width: 0.15rem;
+  height: 1.15rem;
   border-radius: 0.15rem;
-  top: 1.25rem;
-  left: 0.7rem;
-  transform: rotate(90deg);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .transform {
