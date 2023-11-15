@@ -61,4 +61,18 @@ RSpec.describe User, type: :model do
       end
     end
   end
+
+  describe '#belong_to_same_family?' do
+    let(:user) { create(:user) }
+
+    it '同じ家族の場合、trueが返る' do
+      my_child = create(:child, family: user.family)
+      expect(user.belong_to_same_family?(my_child)).to be true
+    end
+
+    it '異なる家族の場合、falseが返る' do
+      other_child = create(:child)
+      expect(user.belong_to_same_family?(other_child)).to be false
+    end
+  end
 end
