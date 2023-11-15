@@ -11,6 +11,8 @@ class User < ApplicationRecord
   validates :provider, presence: true
   validate :validate_avatar
 
+  scope :excepted, ->(user) { where.not(id: user) }
+
   def self.from_omniauth(auth_hash)
     provider = auth_hash[:provider]
     uid = auth_hash[:uid]
