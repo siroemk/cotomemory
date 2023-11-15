@@ -15,9 +15,9 @@
   .mx-2.mb-6
     h2.mb-6.pb-1.border-b-2.border-slate-200
       | 家族の一覧
-    - if @users.empty?
-      p.text-sm
-        | こどもの情報を共有している家族はいません。
-    - else
+    - if @users.exists?
       #users
       = render @users
+    - else
+      p.text-sm
+        | こどもの情報を共有している家族はいません。
