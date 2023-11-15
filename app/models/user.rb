@@ -15,7 +15,7 @@ class User < ApplicationRecord
     provider = auth_hash[:provider]
     uid = auth_hash[:uid]
     name = auth_hash[:info][:name]
-    User.where(provider:, uid:).first_or_initialize(name:)
+    self.where(provider:, uid:).first_or_initialize(name:)
   end
 
   def create_or_belong_family(invitation_token)
