@@ -48,7 +48,7 @@ class ChildrenController < ApplicationController
   end
 
   def allow_show_children_page_only_family
-    return if @child.family == current_user.family
+    return if current_user.belong_to_same_family?(@child)
 
     redirect_to children_path, alert: 'ご指定のページはアクセスできませんでした'
   end

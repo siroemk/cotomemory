@@ -29,6 +29,10 @@ class User < ApplicationRecord
     end
   end
 
+  def belong_to_same_family?(child)
+    family == child.family
+  end
+
   private
 
   def validate_avatar
