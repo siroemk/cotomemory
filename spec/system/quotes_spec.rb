@@ -53,6 +53,16 @@ RSpec.describe 'Quotes', type: :system do
     end
   end
 
+  describe '#show' do
+    context '別の家族の名言詳細画面にアクセスした場合' do
+      it '「ご指定のページはアクセスできませんでした」と表示されること' do
+        other_family_quote = create(:quote)
+        visit quote_path(other_family_quote)
+        expect(page).to have_content 'ご指定のページはアクセスできませんでした'
+      end
+    end
+  end
+
   describe '#create' do
     it '名言を登録できること' do
       create(:child, family: user.family)
@@ -101,6 +111,14 @@ RSpec.describe 'Quotes', type: :system do
         click_on 'キャンセル'
         expect(current_path).to eq quotes_path
         expect(page).to have_content 'キャンセル前の名言です'
+      end
+    end
+
+    context '別の家族の名言編集画面にアクセスした場合' do
+      it '「ご指定のページはアクセスできませんでした」と表示されること' do
+        other_family_quote = create(:quote)
+        visit edit_quote_path(other_family_quote)
+        expect(page).to have_content 'ご指定のページはアクセスできませんでした'
       end
     end
   end

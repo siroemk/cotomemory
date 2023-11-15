@@ -81,6 +81,14 @@ RSpec.describe 'Children', type: :system do
         expect(page).to have_content 'こどもの名前を入力してください'
       end
     end
+
+    context '別の家族のこどもの編集フォームにアクセスした場合' do
+      it '「ご指定のページはアクセスできませんでした」と表示されること' do
+        other_child = create(:child)
+        visit edit_child_path(other_child)
+        expect(page).to have_content 'ご指定のページはアクセスできませんでした'
+      end
+    end
   end
 
   describe '#destroy' do
