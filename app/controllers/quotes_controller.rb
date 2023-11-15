@@ -17,10 +17,7 @@ class QuotesController < ApplicationController
 
   def show
     @comment = Comment.new
-    @comments = Comment
-                .where(quote_id: params[:id])
-                .includes(:user)
-                .order(created_at: :asc)
+    @comments = @quote.comments.includes(:user).order(created_at: :asc)
   end
 
   def new
