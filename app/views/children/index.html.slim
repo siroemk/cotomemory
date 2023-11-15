@@ -5,10 +5,7 @@
     | こどもの一覧
 
   #children
-    - if @children.empty?
-      p.text-sm.text-center
-        | こどもの情報が登録されていません。
-    - else
+    - if @children.exists?
       table.text-sm.w-full
         thead
           tr.bg-slate-50
@@ -20,5 +17,8 @@
               |
         tbody
           = render @children
+    - else
+      p.text-sm.text-center
+        | こどもの情報が登録されていません。
   .text-center.mt-10.mb-6
     = link_to 'こどもを追加する', new_child_path, class: 'primary-btn px-16'
