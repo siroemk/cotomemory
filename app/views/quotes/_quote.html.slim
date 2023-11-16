@@ -9,11 +9,9 @@
         p.text-sm.text-slate-400
           = l quote.created_at, format: :long
         - if current_user == quote.user
-          .ml-auto.flex.mr-1
+          .ml-auto
             p.text-slate-400
-              = link_to '編集', edit_quote_path(quote), class: 'edit-btn text-sm mr-3'
-            p.text-slate-400
-              = link_to '削除', quote, data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' }, class: 'text-sm'
+              = link_to '編集', edit_quote_path(quote), class: 'text-sm'
 
       p.leading-relaxed.text-slate-800
         = link_to quote_path(quote.id), data: { turbo: false }
