@@ -1,27 +1,28 @@
-= turbo_frame_tag quote do
-  .p-4.border-b.relative
-    .flex.pb-2
-      p.text-slate-600.font-semibold
-        = quote.child.name
-      p.text-slate-600.font-semibold
-        = convert_to_age(quote.child.date_of_birth)
-      p.text-sm.text-slate-400
-        = l quote.created_at, format: :long
-      - if current_user == quote.user
-        .ml-auto.flex.mr-1
-          p.text-slate-400
-            = link_to '編集', edit_quote_path(quote), class: 'edit-btn text-sm mr-3'
-          p.text-slate-400
-            = link_to '削除', quote, data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' }, class: 'text-sm'
+.border-b
+  = turbo_frame_tag quote do
+    .p-4.relative
+      .flex.flex-wrap.pb-2
+        p.text-slate-600.font-semibold
+          = quote.child.name
+        p.text-slate-600.font-semibold
+          = convert_to_age(quote.child.date_of_birth)
+        p.text-sm.text-slate-400
+          = l quote.created_at, format: :long
+        - if current_user == quote.user
+          .ml-auto.flex.mr-1
+            p.text-slate-400
+              = link_to '編集', edit_quote_path(quote), class: 'edit-btn text-sm mr-3'
+            p.text-slate-400
+              = link_to '削除', quote, data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' }, class: 'text-sm'
 
-    p.leading-relaxed.text-slate-800
-      = link_to quote_path(quote.id), data: { turbo: false }
-        = quote.content
+      p.leading-relaxed.text-slate-800
+        = link_to quote_path(quote.id), data: { turbo: false }
+          = quote.content
 
-    .flex.justify-end
-      = link_to quote_path(quote.id), data: { turbo: false }, class: 'pr-1'
-        .flex
-          .pr-1
-            = image_tag 'comment-icon.png', alt: 'コメントの画像', class: 'h-4'
-          p.text-slate-500.text-xs
-            = quote.comments.count
+      .flex.justify-end
+        = link_to quote_path(quote.id), data: { turbo: false }, class: 'pr-1'
+          .flex
+            .pr-1
+              = image_tag 'comment-icon.png', alt: 'コメントの画像', class: 'h-4'
+            p.text-slate-500.text-xs
+              = quote.comments.count
