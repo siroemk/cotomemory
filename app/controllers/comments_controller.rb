@@ -18,14 +18,13 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment = @quote.comments.find(params[:id])
-    if current_user == @comment.user
-      @comment.destroy
-      respond_to do |format|
-        format.html { redirect_to quote_comments_path(@quote), notice: 'コメントを削除しました' }
-        format.turbo_stream { flash.now[:notice] = 'コメントを削除しました' }
-      end
-    else
-      render 'quotes/show', status: :unprocessable_entity
+
+    return render 'quotes/show', status: :unprocessable_entity unless current_user == @comment.user
+
+    @comment.destroy
+    respond_to do |format|
+      format.html { redirect_to quote_comments_path(@quote), notice: 'コメントを削除しました' }
+      format.turbo_stream { flash.now[:notice] = 'コメントを削除しました' }
     end
   end
 
