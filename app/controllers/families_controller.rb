@@ -2,7 +2,7 @@
 
 class FamiliesController < ApplicationController
   def show
-    @family = Family.find(current_user.family_id)
+    @family = current_user.family
     @users = @family.users.excepted(current_user).order(created_at: :asc)
   end
 end
