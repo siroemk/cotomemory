@@ -5,7 +5,7 @@
     = render @quotes
     = turbo_frame_tag "quotes-page-#{@quotes.next_page}", loading: :lazy, src: path_to_next_page(@quotes)
 
-- unless @quotes.exists?
+- if @quotes.empty?
   #first_message
     .mt-20.mb-2.bg-white.rounded.h-full
       p.text-center.mb-8

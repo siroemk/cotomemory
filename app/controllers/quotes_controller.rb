@@ -5,7 +5,7 @@ class QuotesController < ApplicationController
   before_action :allow_show_quote_page_only_family, only: %i[show edit update destroy]
 
   def index
-    redirect_to new_child_path unless current_user.family.children.exists?
+    redirect_to new_child_path if current_user.family.children.empty?
 
     children_ids = current_user.family.children.pluck(:id)
     @quotes = Quote
