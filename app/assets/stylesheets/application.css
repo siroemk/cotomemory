@@ -17,7 +17,7 @@
 .navbar {
   position: relative;
   width: 24px;
-  height: 32px;
+  height: 33px;
   margin-top: 12px;
 }
 
@@ -42,7 +42,7 @@
 }
 
 .navbar_icon::after {
-  bottom: 7px;
+  bottom: 8px;
 }
 
 .plus_icon {

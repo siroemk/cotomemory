@@ -35,20 +35,18 @@ RSpec.describe 'Quotes', type: :system do
     end
 
     context '名言を登録したユーザーの場合' do
-      it '名言の編集と削除ボタンが表示される' do
+      it '名言の編集ボタンが表示される' do
         quote = create(:quote, child:, user:)
         visit quotes_path
         expect(page).to have_link('編集', href: "/quotes/#{quote.id}/edit")
-        expect(page).to have_link('削除', href: "/quotes/#{quote.id}")
       end
     end
 
     context '名言を登録していないユーザーの場合' do
-      it '名言の編集と削除ボタンが表示されない' do
+      it '名言の編集ボタンが表示されない' do
         quote = create(:quote, child:)
         visit quotes_path
         expect(page).to_not have_link('編集', href: "/quotes/#{quote.id}/edit")
-        expect(page).to_not have_link('削除', href: "/quotes/#{quote.id}")
       end
     end
   end
@@ -125,11 +123,14 @@ RSpec.describe 'Quotes', type: :system do
 
   describe '#destroy' do
     it '名言を削除できること' do
-      create(:quote, content: 'おつきさまがついてくるよ', child:, user:)
+      quote = create(:quote, content: 'おつきさまがついてくるよ', child:, user:)
       visit quotes_path
       expect(page).to have_content 'おつきさまがついてくるよ'
 
-      click_on '削除'
+      within("#quote_#{quote.id}") do
+        click_on '編集'
+      end
+      click_on 'この名言を削除する'
       expect(page.accept_confirm).to eq('本当に削除しますか？')
       expect(page).to have_content '名言を削除しました'
 
