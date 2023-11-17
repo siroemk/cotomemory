@@ -14,7 +14,7 @@
               = link_to '編集', edit_quote_path(quote), class: 'text-sm'
 
       p.leading-relaxed.text-slate-800
-        = link_to quote_path(quote.id), data: { turbo: false }
+        = link_to quote_path(quote.id), data: { turbo: false }, class: 'block'
           = quote.content
 
       .flex.justify-end
