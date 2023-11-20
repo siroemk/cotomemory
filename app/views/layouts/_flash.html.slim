@@ -1,14 +1,14 @@
 - flash.each do |flash_type, message|
   div data-controller="removals"
     - if flash_type == 'notice'
-      .bg-green-50.m-2.p-3.rounded.flex
-        p.text-sm.text-green-800
+      .bg-green-50.m-2.rounded.flex.items-center
+        p.text-sm.text-green-800.pl-4
           = message
-        p.text-sm.text-green-800.ml-auto.cursor-pointer data-action='click->removals#remove'
+        p.text-xl.text-green-800.ml-auto.cursor-pointer.px-4.py-3 data-action='click->removals#remove'
           | ×
     - if flash_type == 'alert'
-      .bg-rose-50.m-2.p-3.rounded.flex
-          p.text-sm.text-rose-800
+      .bg-rose-50.m-2.rounded.flex.items-center
+          p.text-sm.text-rose-800.pl-4
             = message
-          p.text-sm.text-rose-800.ml-auto.cursor-pointer data-action='click->removals#remove'
+          p.text-xl.text-rose-800.ml-auto.cursor-pointer.px-4.py-3 data-action='click->removals#remove'
             | ×
