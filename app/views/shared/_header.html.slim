@@ -14,13 +14,13 @@
               li.text-right.px-6.py-2
                 button.text-3xl data-action='click->navbar#close'
                   | ×
-              li.p-6.text-center
-                = link_to 'アカウント設定', user_path
-              li.p-6.text-center
-                = link_to 'こどもの一覧', children_path
-              li.p-6.text-center
-                = link_to 'こどもの情報を登録する', new_child_path
-              li.p-6.text-center
-                = link_to '家族を招待する', family_path
-              li.p-6.text-center
-                = link_to 'ログアウト', logout_path
+              li.text-center
+                = link_to 'アカウント設定', user_path, class: 'block p-6'
+              li.text-center
+                = link_to 'こどもの一覧', children_path, class: 'block p-6'
+              li.text-center
+                = link_to 'こどもの情報を登録する', new_child_path, class: 'block p-6'
+              li.text-center
+                = link_to '家族を招待する', family_path, class: 'block p-6'
+              li.text-center
+                = link_to 'ログアウト', logout_path, class: 'block p-6'
