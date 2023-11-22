@@ -1,6 +1,6 @@
-.border-b
-  = turbo_frame_tag quote do
-    .p-4.relative
+= turbo_frame_tag quote do
+  .border-b
+    .px-4.pt-4.relative
       .flex.flex-wrap.pb-2
         p.text-slate-600.font-semibold
           = quote.child.name
@@ -14,11 +14,11 @@
               = link_to '編集', edit_quote_path(quote), class: 'text-sm'
 
       p.leading-relaxed.text-slate-800
-        = link_to quote_path(quote.id), data: { turbo: false }
+        = link_to quote_path(quote.id), data: { turbo: false }, class: 'block'
           = quote.content
 
       .flex.justify-end
-        = link_to quote_path(quote.id), data: { turbo: false }, class: 'pr-1'
+        = link_to quote_path(quote.id), data: { turbo: false }, class: 'pt-2 pl-2 pb-4'
           .flex
             .pr-1
               = image_tag 'comment-icon.png', alt: 'コメントの画像', class: 'h-4'

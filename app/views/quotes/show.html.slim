@@ -21,4 +21,6 @@
   #comments
     = render partial: 'comments/comment', collection: @comments, as: :comment
 
+  p.text-sm.text-slate-700.ml-4.mt-3.mb-1
+      | コメントする
   = render 'comments/form', { quote: @quote, comment: @comment }
