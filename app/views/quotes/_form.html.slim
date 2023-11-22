@@ -7,11 +7,17 @@
             = message
 
   .mb-4.text-left.flex.items-center
-    .mr-3.5
-      = f.collection_select :child_id, Child.where(family_id: current_user.family_id).order(:created_at), :id, :name, {},
-        class: 'py-3 px-4 w-48 border-gray-300 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500'
-    .text-slate-600
-      p の名言を保存する
+    - if current_user.family.children.count > 1
+      = f.collection_select :child_id, current_user.family.children.order(:created_at), :id, :name, {},
+        class: 'mr-3.5 py-3 px-4 w-48 border-gray-300 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500'
+      .text-slate-600
+        p の名言を保存する
+    - else
+      = f.hidden_field :child_id, value: current_user.family.children.first.id
+      .text-slate-600.font-bold.mr-1.mb-3
+        p #{current_user.family.children.first.name}さん
+      .text-slate-600.mb-3
+        p の名言を保存する
   .mb-4
     = f.text_area :content,
       class: 'py-3 px-4 block w-full h-32 border-gray-300 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500'
