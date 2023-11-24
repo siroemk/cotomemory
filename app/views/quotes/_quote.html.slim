@@ -15,7 +15,7 @@
 
       p.leading-relaxed.text-slate-800
         = link_to quote_path(quote.id), data: { turbo: false }, class: 'block'
-          = quote.content
+          = simple_format(h(quote.content))
 
       .flex.justify-end
         = link_to quote_path(quote.id), data: { turbo: false }, class: 'pt-2 pl-2 pb-4'
