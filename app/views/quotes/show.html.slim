@@ -9,7 +9,7 @@
         = l @quote.created_at, format: :long
 
     p.leading-relaxed.text-slate-800.text-base
-      = @quote.content
+      = simple_format(h(@quote.content))
 
     p.text-xs.text-slate-500.text-right
       | 記録：
