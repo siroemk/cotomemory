@@ -87,3 +87,29 @@
   transform: translateX(-50%) translateY(-50%);
   -webkit-transform: translateX(-50%) translateY(-50%);
 }
+
+.custom-shape-divider-top,
+.custom-shape-divider-bottom {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.custom-shape-divider-top svg,
+.custom-shape-divider-bottom svg {
+  position: relative;
+  display: block;
+  width: calc(155% + 2px);
+  height: 40px;
+}
+
+.custom-shape-divider-top .shape-fill {
+  fill: #FFF;
+}
+
+.custom-shape-divider-bottom .shape-fill {
+  fill: #F1F5F9;
+}
