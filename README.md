@@ -19,10 +19,10 @@ https://cotomemory.com/
 <img width="30%" alt="ログイン画面" src="https://github.com/siroemk/cotomemory/assets/31835314/ea0b6a32-8169-4adf-a0c3-16ea25dd597f">
 
 ### 2. こどもの情報を登録する
-<img width="30%" alt="こどもの登録画面" src="https://github.com/siroemk/cotomemory/assets/31835314/05666015-9f38-4b22-ae3c-2c3fe2736f69">
+<img width="30%" alt="こどもの登録画面" src="https://github.com/siroemk/cotomemory/assets/31835314/dc3978b1-0c6d-48b6-b307-902633488bd5">
 
 ### 3. こどもの名言を登録する
-<img width="30%" alt="名言画面" src="https://github.com/siroemk/cotomemory/assets/31835314/18a94d51-7556-4ac5-8933-33de162b3650">
+<img width="30%" alt="名言画面" src="https://github.com/siroemk/cotomemory/assets/31835314/4c592a9b-e491-424b-8c6c-fbfca6ffb1cd">
 
 ## 招待機能の使い方
 ### 1. 招待する側の人が招待URLを取得する
@@ -32,7 +32,7 @@ https://cotomemory.com/
 このURLを招待したい家族に伝えてください。
 
 ### 2. 招待された側の人は招待URLからログインする
-<img width="30%" alt="welcomeページ" src="https://github.com/siroemk/cotomemory/assets/31835314/9398e50f-39bc-4703-9fa7-dee028633973">
+<img width="30%" alt="welcomeページ" src="https://github.com/siroemk/cotomemory/assets/31835314/82cecb1a-48c0-4c63-a9b8-8529091419d7">
 
 招待された人は招待URLにアクセスし、表示された画面からGoogleでログインしてください。  
 招待URLからログインすると、家族が登録した名言も名言一覧に表示されるようになります。
