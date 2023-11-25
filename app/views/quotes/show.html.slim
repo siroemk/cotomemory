@@ -11,7 +11,7 @@
     p.leading-relaxed.text-slate-800.text-base
       = simple_format(h(@quote.content))
 
-    p.text-xs.text-slate-500.text-right
+    p.text-xs.text-slate-500.text-right.py-2
       | 記録：
       - if @quote.user.nil?
         | 退会済みのユーザー
