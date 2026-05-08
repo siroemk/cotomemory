@@ -7,6 +7,11 @@ app = "cotomemory"
 primary_region = "nrt"
 console_command = "/rails/bin/rails console"
 
+[env]
+  RAILS_MAX_THREADS = "2"
+  RAILS_MIN_THREADS = "1"
+  MALLOC_ARENA_MAX = "2"
+
 [experimental]
   auto_rollback = true
 
@@ -17,8 +22,8 @@ console_command = "/rails/bin/rails console"
   protocol = "tcp"
   script_checks = []
   [services.concurrency]
-    hard_limit = 25
-    soft_limit = 20
+    hard_limit = 10
+    soft_limit = 5
     type = "connections"
 
   [[services.ports]]
