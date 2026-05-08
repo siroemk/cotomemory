@@ -10,5 +10,6 @@ module SignInHelper
     )
     visit root_path
     click_on 'Googleでログイン', match: :first
+    expect(page).to have_content 'ログインしました'
   end
 end
