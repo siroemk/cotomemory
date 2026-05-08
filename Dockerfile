@@ -14,9 +14,8 @@ ENV RAILS_ENV="production" \
     BUNDLE_WITHOUT="development:test" \
     BUNDLE_DEPLOYMENT="1"
 
-# Update gems and bundler
-RUN gem update --system --no-document && \
-    gem install -N bundler
+# Install the Bundler version used by Gemfile.lock without upgrading RubyGems.
+RUN gem install -N bundler:2.4.14
 
 
 # Throw-away build stage to reduce size of final image
