@@ -85,6 +85,19 @@ RSpec.describe 'Quotes', type: :system do
         expect(page).to have_content '名言の内容を入力してください'
       end
     end
+
+    context '追加ボタンから登録する場合' do
+      it '名言を登録できること' do
+        create(:quote, child:, user:)
+        visit quotes_path
+        find('.plus_icon').click
+        fill_in 'quote[content]', with: '追加ボタンから登録した名言です'
+        click_on '保存する'
+
+        expect(page).to have_content '名言を登録しました'
+        expect(page).to have_content '追加ボタンから登録した名言です'
+      end
+    end
   end
 
   describe '#edit' do
