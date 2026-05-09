@@ -175,6 +175,7 @@ GEM
     method_source (1.0.0)
     mini_magick (4.12.0)
     mini_mime (1.1.2)
+    mini_portile2 (2.8.9)
     minitest (5.18.1)
     msgpack (1.7.1)
     multi_xml (0.6.0)
@@ -188,9 +189,8 @@ GEM
     net-smtp (0.3.3)
       net-protocol
     nio4r (2.5.9)
-    nokogiri (1.15.2-x86_64-darwin)
-      racc (~> 1.4)
-    nokogiri (1.15.2-x86_64-linux)
+    nokogiri (1.15.2)
+      mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
     oauth2 (2.0.9)
       faraday (>= 0.17.3, < 3.0)
@@ -370,6 +370,7 @@ GEM
 PLATFORMS
   x86_64-darwin-17
   x86_64-darwin-20
+  x86_64-darwin-25
   x86_64-linux
 
 DEPENDENCIES
@@ -408,7 +409,7 @@ DEPENDENCIES
   webdrivers
 
 RUBY VERSION
-   ruby 3.2.2p53
+   ruby 3.3.10p183
 
 BUNDLED WITH
    2.4.14
