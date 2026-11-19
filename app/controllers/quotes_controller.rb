@@ -34,7 +34,7 @@ class QuotesController < ApplicationController
         format.turbo_stream { flash.now[:notice] = '名言を登録しました' }
       end
     else
-      render :new, status: :unprocessable_entity
+      render :new, status: :unprocessable_content
     end
   end
 
@@ -45,7 +45,7 @@ class QuotesController < ApplicationController
         format.turbo_stream { flash.now[:notice] = '名言を更新しました' }
       end
     else
-      render :edit, status: :unprocessable_entity
+      render :edit, status: :unprocessable_content
     end
   end
 
@@ -60,11 +60,11 @@ class QuotesController < ApplicationController
   private
 
   def quote_params
-    params.require(:quote).permit(:content, :child_id)
+    params.expect(quote: %i[content child_id])
   end
 
   def set_quote
-    @quote = Quote.find(params[:id])
+    @quote = Quote.find(params.expect(:id))
   end
 
   def allow_show_quote_page_only_family

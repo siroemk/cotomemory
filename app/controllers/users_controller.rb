@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     if current_user.update(user_params)
       redirect_to user_path, notice: 'ユーザー情報を更新しました'
     else
-      render :edit, status: :unprocessable_entity
+      render :edit, status: :unprocessable_content
     end
   end
 
@@ -22,6 +22,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :avatar)
+    params.expect(user: %i[name avatar])
   end
 end

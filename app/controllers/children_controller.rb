@@ -19,7 +19,7 @@ class ChildrenController < ApplicationController
     if @child.save
       redirect_to quotes_path, notice: 'こどもの情報を登録しました'
     else
-      render :new, status: :unprocessable_entity
+      render :new, status: :unprocessable_content
     end
   end
 
@@ -27,7 +27,7 @@ class ChildrenController < ApplicationController
     if @child.update(child_params)
       redirect_to children_path, notice: 'こどもの情報を編集しました'
     else
-      render :edit, status: :unprocessable_entity
+      render :edit, status: :unprocessable_content
     end
   end
 
@@ -40,11 +40,11 @@ class ChildrenController < ApplicationController
   private
 
   def child_params
-    params.require(:child).permit(:name, :date_of_birth)
+    params.expect(child: %i[name date_of_birth])
   end
 
   def set_child
-    @child = Child.find(params[:id])
+    @child = Child.find(params.expect(:id))
   end
 
   def allow_show_children_page_only_family
