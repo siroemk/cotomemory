@@ -12,14 +12,14 @@ class CommentsController < ApplicationController
         format.turbo_stream { flash.now[:notice] = 'コメントしました' }
       end
     else
-      render 'quotes/show', status: :unprocessable_entity
+      render 'quotes/show', status: :unprocessable_content
     end
   end
 
   def destroy
-    @comment = @quote.comments.find(params[:id])
+    @comment = @quote.comments.find(params.expect(:id))
 
-    return render 'quotes/show', status: :unprocessable_entity unless current_user == @comment.user
+    return render 'quotes/show', status: :unprocessable_content unless current_user == @comment.user
 
     @comment.destroy
     respond_to do |format|
@@ -31,10 +31,10 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:content)
+    params.expect(comment: [:content])
   end
 
   def set_quote
-    @quote = Quote.find(params[:quote_id])
+    @quote = Quote.find(params.expect(:quote_id))
   end
 end

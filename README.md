@@ -38,7 +38,7 @@ https://cotomemory.com/
 招待URLからログインすると、家族が登録した名言も名言一覧に表示されるようになります。
 
 ## 開発環境
-- Ruby 3.2.2
+- Ruby 3.4.13
 - Ruby on Rails 7.0.5
 - Hotwire
 

@@ -14,7 +14,7 @@ class TopController < ApplicationController
   def welcome
     redirect_to quotes_path if logged_in?
 
-    family = Family.find_by!(invitation_token: params[:invitation_token])
+    family = Family.find_by!(invitation_token: params.expect(:invitation_token))
     @invitation_token = family.invitation_token
   end
 end
